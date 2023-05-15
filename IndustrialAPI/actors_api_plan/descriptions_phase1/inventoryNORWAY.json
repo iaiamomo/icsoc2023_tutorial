@@ -1,0 +1,41 @@
+{
+    "id": "inventorynorway",
+    "attributes": {
+        "type": "Service_inv_no",
+        "actions": {
+            "taking_silicon": {
+                "properties": {
+                    "type": "operation",
+                    "command": "take_silicon_no",
+                    "cost": 7,
+                    "parameters": [
+                        "Design - d",
+                        "SiliconMaterial - s"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "d.taken:true",
+                            "s.taken:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "s.taken:true"
+                        ],
+                        "deleted": [
+                            "s.taken:false"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}

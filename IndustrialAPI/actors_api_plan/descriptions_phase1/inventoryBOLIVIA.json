@@ -1,0 +1,41 @@
+{
+    "id": "inventorybolivia",
+    "attributes": {
+        "type": "Service_inv_bo",
+        "actions": {
+            "taking_boron": {
+                "properties": {
+                    "type": "operation",
+                    "command": "take_boron_bo",
+                    "cost": 6,
+                    "parameters": [
+                        "Design - d",
+                        "BoronMaterial - b"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "d.taken:true",
+                            "b.taken:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "b.taken:true"
+                        ],
+                        "deleted": [
+                            "b.taken:false"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}

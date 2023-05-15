@@ -1,0 +1,42 @@
+{
+    "id": "exposer5usa",
+    "attributes": {
+        "type": "Service_exp5",
+        "actions": {
+            "exposing": {
+                "properties": {
+                    "type": "operation",
+                    "command": "expose_5",
+                    "cost": 4,
+                    "parameters": [
+                        "Material - w",
+                        "ResistMaterial - r"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "w.coated:true",
+                            "r.coated:true",
+                            "w.exposed:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "w.exposed:true"
+                        ],
+                        "deleted": [
+                            "w.exposed:false"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}

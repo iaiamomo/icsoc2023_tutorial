@@ -1,0 +1,46 @@
+{
+    "id": "assembler2usa",
+    "attributes": {
+        "type": "Service_ass2",
+        "actions": {
+            "assembling": {
+                "properties": {
+                    "type": "operation",
+                    "command": "assemble_2",
+                    "cost": 4,
+                    "parameters": [
+                        "Material - w",
+                        "CopperMaterial - c",
+                        "ChemicalsMaterial - ch"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "w.stripped:true",
+                            "ch.stripped:true",
+                            "w.assembled:false",
+                            "c.assembled:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "w.assembled:true",
+                            "c.assembled:true"
+                        ],
+                        "deleted": [
+                            "w.assembled:false",
+                            "c.assembled:false"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}

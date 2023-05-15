@@ -1,0 +1,41 @@
+{
+    "id": "inventoryaustralia",
+    "attributes": {
+        "type": "Service_inv_au",
+        "actions": {
+            "taking_aluminum": {
+                "properties": {
+                    "type": "operation",
+                    "command": "take_aluminum_au",
+                    "cost": 14,
+                    "parameters": [
+                        "Design - d",
+                        "AluminumMaterial - b"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "d.taken:true",
+                            "b.taken:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "b.taken:true"
+                        ],
+                        "deleted": [
+                            "b.taken:false"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "id": "developer2usa",
+    "attributes": {
+        "type": "Service_dev2",
+        "actions": {
+            "developing": {
+                "properties": {
+                    "type": "operation",
+                    "command": "delevop_2",
+                    "cost": 2,
+                    "parameters": [
+                        "Material - w"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "w.exposed:true",
+                            "w.developed:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "w.developed:true"
+                        ],
+                        "deleted": [
+                            "w.developed:false"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}

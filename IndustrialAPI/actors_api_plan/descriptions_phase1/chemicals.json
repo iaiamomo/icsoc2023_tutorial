@@ -1,0 +1,13 @@
+{
+    "id": "chemicals",
+    "attributes": {
+        "type": "ChemicalsMaterial"
+    },
+    "features": {
+        "taken": {
+            "properties": {
+                "value": "false"
+            }
+        }
+    }
+}

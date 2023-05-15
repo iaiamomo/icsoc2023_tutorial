@@ -1,0 +1,39 @@
+{
+    "id": "designerusa",
+    "attributes": {
+        "type": "Service_des_us",
+        "actions": {
+            "taking_design": {
+                "properties": {
+                    "type": "operation",
+                    "command": "take_design_us",
+                    "cost": 1,
+                    "parameters": [
+                        "Design - o"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "o.taken:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "o.taken:true"
+                        ],
+                        "deleted": [
+                            "o.taken:false"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}

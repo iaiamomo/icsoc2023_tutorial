@@ -1,0 +1,169 @@
+{
+    "id": "inventoryusa",
+    "attributes": {
+        "type": "Service_inv_us",
+        "actions": {
+            "taking_boron": {
+                "properties": {
+                    "type": "operation",
+                    "command": "take_boron_us",
+                    "cost": 1,
+                    "parameters": [
+                        "Design - d",
+                        "BoronMaterial - b"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "d.taken:true",
+                            "b.taken:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "b.taken:true"
+                        ],
+                        "deleted": [
+                            "b.taken:false"
+                        ]
+                    }
+                }
+            },"taking_phosphor": {
+                "properties": {
+                    "type": "operation",
+                    "command": "take_phosphor_us",
+                    "cost": 1,
+                    "parameters": [
+                        "Design - d",
+                        "PhosphorMaterial - p"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "d.taken:true",
+                            "p.taken:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "p.taken:true"
+                        ],
+                        "deleted": [
+                            "p.taken:false"
+                        ]
+                    }
+                }
+            },"taking_silicon": {
+                "properties": {
+                    "type": "operation",
+                    "command": "take_silicon_us",
+                    "cost": 1,
+                    "parameters": [
+                        "Design - d",
+                        "SiliconMaterial - s"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "d.taken:true",
+                            "s.taken:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "s.taken:true"
+                        ],
+                        "deleted": [
+                            "s.taken:false"
+                        ]
+                    }
+                }
+            },
+            "taking_resist": {
+                "properties": {
+                    "type": "operation",
+                    "command": "take_resist_us",
+                    "cost": 1,
+                    "parameters": [
+                        "Design - d",
+                        "ResistMaterial - b"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "d.taken:true",
+                            "b.taken:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "b.taken:true"
+                        ],
+                        "deleted": [
+                            "b.taken:false"
+                        ]
+                    }
+                }
+            },
+            "taking_chemicals": {
+                "properties": {
+                    "type": "operation",
+                    "command": "take_chemicals_us",
+                    "cost": 1,
+                    "parameters": [
+                        "Design - d",
+                        "ChemicalsMaterial - b"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "d.taken:true",
+                            "b.taken:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "b.taken:true"
+                        ],
+                        "deleted": [
+                            "b.taken:false"
+                        ]
+                    }
+                }
+            },
+            "taking_copper": {
+                "properties": {
+                    "type": "operation",
+                    "command": "take_copper_us",
+                    "cost": 1,
+                    "parameters": [
+                        "Design - d",
+                        "CopperMaterial - b"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "d.taken:true",
+                            "b.taken:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "b.taken:true"
+                        ],
+                        "deleted": [
+                            "b.taken:false"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}

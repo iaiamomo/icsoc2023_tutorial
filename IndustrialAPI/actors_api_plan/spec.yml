@@ -1,0 +1,130 @@
+openapi: '3.0.0'
+info:
+  title: Industrial API
+  version: "0.1.0"
+  description: A local service able to handle registration and dispatching of messages among connected devices.
+
+paths:
+  /services:
+    get:
+      tags: [Services]
+      operationId: app.server.api.get_services
+      summary: Get all services
+      responses:
+        200:
+          description: Return services
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Service'
+  "/services/{service_id}":
+    get:
+      tags: [Services]
+      operationId: app.server.api.get_service
+      summary: Get a single service
+      parameters:
+        - $ref: '#/components/parameters/serviceId'
+      responses:
+        200:
+          description: Return service
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Service'
+        404:
+          description: Service does not exist
+  "/break-service/{service_id}":
+    post:
+      tags: [Services]
+      operationId: app.server.api.break_service
+      summary: Request to break a service
+      parameters:
+        - $ref: '#/components/parameters/serviceId'
+      responses:
+        200:
+          description: Return an ack to the caller
+        404:
+          description: Service does not exist
+  "/execute-service-action/{service_id}":
+    post:
+      tags: [Services]
+      operationId: app.server.api.execute_service_action
+      summary: Request a service to execute an action
+      parameters:
+        - $ref: '#/components/parameters/serviceId'
+      requestBody:
+        description: The action name
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Action'
+      responses:
+        200:
+          description: Return an ack to the caller
+        404:
+          description: Service does not exist
+
+components:
+  parameters:
+    serviceId:
+      in: path
+      name: service_id
+      schema:
+        $ref: '#/components/schemas/serviceId'
+      required: true
+      description: Service ID
+
+  schemas:
+    serviceId:
+      type: string
+      pattern: "^[A-Za-z0-9-_]+$"
+    stateName:
+      type: string
+      pattern: "^[A-Za-z0-9-_]+$"
+    actionName:
+      type: string
+      pattern: "^[A-Za-z0-9-_]+$"
+    deviceType:
+      type: string
+      pattern: "^[A-Za-z0-9-_]+$"
+    Action:
+      type: object
+      required:
+        - command
+        - service_id
+        - parameters
+      properties:
+        command:
+          type: string
+        service_id:
+          type: string
+        parameters:
+          type: array
+          items:
+            type: string
+    ActionsSet:
+      type: object
+    Service:
+      type: object
+      required:
+        - id
+        - features
+        - attributes
+      properties:
+        id:
+          $ref: '#/components/schemas/serviceId'
+        attributes:
+          type: object
+          required:
+            - type
+            - actions
+          properties:
+            type:
+              $ref: "#/components/schemas/deviceType"
+            actions:
+              $ref: "#/components/schemas/ActionsSet"
+        features:
+          type: object

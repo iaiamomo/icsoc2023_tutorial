@@ -1,0 +1,18 @@
+{
+    "id": "chemicals",
+    "attributes": {
+        "type": "ChemicalsMaterial"
+    },
+    "features": {
+        "etched": {
+            "properties": {
+                "value": "false"
+            }
+        },
+        "stripped": {
+            "properties": {
+                "value": "false"
+            }
+        }
+    }
+}

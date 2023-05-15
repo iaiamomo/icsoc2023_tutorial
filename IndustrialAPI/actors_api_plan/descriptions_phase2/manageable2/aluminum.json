@@ -1,0 +1,18 @@
+{
+    "id": "aluminum",
+    "attributes": {
+        "type": "AluminumMaterial"
+    },
+    "features": {
+        "taken": {
+            "properties": {
+                "value": "false"
+            }
+        },
+        "deposited": {
+            "properties": {
+                "value": "false"
+            }
+        }
+    }
+}
