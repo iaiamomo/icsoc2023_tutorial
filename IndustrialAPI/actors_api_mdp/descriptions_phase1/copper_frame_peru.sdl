@@ -1,0 +1,12 @@
+copper_frame_peru{
+    "ready": {
+        "pick_copper_frame": [
+            {
+                "ready": 1.0
+            },
+            -6.0
+        ]
+    }
+}
+{'ready'}
+ready

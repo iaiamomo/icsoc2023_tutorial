@@ -1,0 +1,12 @@
+copper_frame_chile{
+    "ready": {
+        "pick_copper_frame": [
+            {
+                "ready": 1.0
+            },
+            -7.8
+        ]
+    }
+}
+{'ready'}
+ready

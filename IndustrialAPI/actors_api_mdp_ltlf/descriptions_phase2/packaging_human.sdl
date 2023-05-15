@@ -1,0 +1,12 @@
+packaging_human{
+    "ready": {
+        "packaging": [
+            {
+                "ready": 1.0
+            },
+            -1.0
+        ]
+    }
+}
+{'ready'}
+ready

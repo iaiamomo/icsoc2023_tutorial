@@ -1,0 +1,12 @@
+resist_usa{
+    "ready": {
+        "pick_resist": [
+            {
+                "ready": 1.0
+            },
+            -2.0
+        ]
+    }
+}
+{'ready'}
+ready

@@ -1,0 +1,12 @@
+resist_canada{
+    "ready": {
+        "pick_resist": [
+            {
+                "ready": 1.0
+            },
+            -1.8
+        ]
+    }
+}
+{'ready'}
+ready

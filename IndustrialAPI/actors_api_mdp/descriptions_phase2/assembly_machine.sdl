@@ -1,0 +1,12 @@
+assembly_machine{
+    "ready": {
+        "assembly": [
+            {
+                "ready": 1.0
+            },
+            -2.0
+        ]
+    }
+}
+{'ready'}
+ready

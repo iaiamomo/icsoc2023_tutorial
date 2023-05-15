@@ -1,0 +1,12 @@
+wafer_south_korea{
+    "ready": {
+        "pick_wafer": [
+            {
+                "ready": 1.0
+            },
+            -10.7
+        ]
+    }
+}
+{'ready'}
+ready

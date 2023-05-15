@@ -1,0 +1,12 @@
+cleaning{
+    "ready": {
+        "cleaning": [
+            {
+                "ready": 1.0
+            },
+            -2.0
+        ]
+    }
+}
+{'ready'}
+ready

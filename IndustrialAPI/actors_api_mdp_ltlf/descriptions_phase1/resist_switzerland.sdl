@@ -1,0 +1,12 @@
+resist_switzerland{
+    "ready": {
+        "pick_resist": [
+            {
+                "ready": 1.0
+            },
+            -8.0
+        ]
+    }
+}
+{'ready'}
+ready

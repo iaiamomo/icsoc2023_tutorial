@@ -1,0 +1,29 @@
+etching2_machine{
+    "available": {
+        "etching": [
+            {
+                "done": 0.5,
+                "broken": 0.5
+            },
+            -5.0
+        ]
+    },
+    "broken": {
+        "check_etching": [
+            {
+                "available": 1.0
+            },
+            -10.0
+        ]
+    },
+    "done": {
+        "check_etching": [
+            {
+                "available": 1.0
+            },
+            0.0
+        ]
+    }
+}
+{'available'}
+available

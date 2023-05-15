@@ -1,0 +1,46 @@
+resist_coating_machine2{
+    "ready": {
+        "config_resist_coating": [
+            {
+                "configured": 1.0
+            },
+            0.0
+        ]
+    },
+    "configured": {
+        "checked_resist_coating": [
+            {
+                "executing": 0.95,
+                "broken": 0.05
+            },
+            0.0
+        ]
+    },
+    "executing": {
+        "resist_coating": [
+            {
+                "ready": 0.95,
+                "broken": 0.05
+            },
+            -5.0
+        ]
+    },
+    "broken": {
+        "restore_resist_coating": [
+            {
+                "repairing": 1.0
+            },
+            -10.0
+        ]
+    },
+    "repairing": {
+        "repaired_resist_coating": [
+            {
+                "ready": 1.0
+            },
+            0.0
+        ]
+    }
+}
+{'ready'}
+ready

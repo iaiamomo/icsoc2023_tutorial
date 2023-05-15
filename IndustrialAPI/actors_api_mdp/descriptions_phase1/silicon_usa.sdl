@@ -1,0 +1,12 @@
+silicon_usa{
+    "ready": {
+        "pick_silicon": [
+            {
+                "ready": 1.0
+            },
+            -2.0
+        ]
+    }
+}
+{'ready'}
+ready

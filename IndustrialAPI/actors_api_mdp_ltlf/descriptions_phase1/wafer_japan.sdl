@@ -1,0 +1,12 @@
+wafer_japan{
+    "ready": {
+        "pick_wafer": [
+            {
+                "ready": 1.0
+            },
+            -10.1
+        ]
+    }
+}
+{'ready'}
+ready

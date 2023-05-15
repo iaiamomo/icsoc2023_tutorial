@@ -1,0 +1,12 @@
+boron_usa{
+    "ready": {
+        "pick_boron": [
+            {
+                "ready": 1.0
+            },
+            -2.0
+        ]
+    }
+}
+{'ready'}
+ready

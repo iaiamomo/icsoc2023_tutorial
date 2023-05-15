@@ -1,0 +1,12 @@
+testing_machine{
+    "ready": {
+        "testing": [
+            {
+                "ready": 1.0
+            },
+            -2.0
+        ]
+    }
+}
+{'ready'}
+ready

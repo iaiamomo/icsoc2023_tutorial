@@ -1,0 +1,12 @@
+packaging_machine{
+    "ready": {
+        "packaging": [
+            {
+                "ready": 1.0
+            },
+            -2.0
+        ]
+    }
+}
+{'ready'}
+ready

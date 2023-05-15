@@ -1,0 +1,12 @@
+chemicals_canada{
+    "ready": {
+        "pick_chemicals": [
+            {
+                "ready": 1.0
+            },
+            -1.8
+        ]
+    }
+}
+{'ready'}
+ready
