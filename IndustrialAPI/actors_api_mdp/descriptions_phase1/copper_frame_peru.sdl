@@ -1,12 +1,33 @@
-copper_frame_peru{
-    "ready": {
+{
+  "id": "copper_frame_peru_service",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
         "pick_copper_frame": [
-            {
-                "ready": 1.0
-            },
-            -6.0
+          {
+            "ready": 1
+          },
+          -6
         ]
-    }
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+    },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "pick_copper_frame": [
+          {
+            "ready": 1
+          },
+          -6
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
 }
-{'ready'}
-ready

@@ -1,12 +1,33 @@
-phosphor_morocco{
-    "ready": {
+{
+  "id": "phosphor_morocco_service",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
         "pick_phosphor": [
-            {
-                "ready": 1.0
-            },
-            -7.9
+          {
+            "ready": 1
+          },
+          -7.9
         ]
-    }
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+    },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "pick_phosphor": [
+          {
+            "ready": 1
+          },
+          -7.9
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
 }
-{'ready'}
-ready

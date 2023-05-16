@@ -1,12 +1,33 @@
-silicon_brazil{
-    "ready": {
+{
+  "id": "silicon_brazil_service",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
         "pick_silicon": [
-            {
-                "ready": 1.0
-            },
-            -6.7
+          {
+            "ready": 1
+          },
+          -6.7
         ]
-    }
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+    },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "pick_silicon": [
+          {
+            "ready": 1
+          },
+          -6.7
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
 }
-{'ready'}
-ready

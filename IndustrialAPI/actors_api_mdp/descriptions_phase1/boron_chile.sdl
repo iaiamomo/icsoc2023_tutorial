@@ -1,12 +1,33 @@
-boron_chile{
-    "ready": {
+{
+  "id": "boron_chile_service",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
         "pick_boron": [
-            {
-                "ready": 1.0
-            },
-            -7.8
+          {
+            "ready": 1
+          },
+          -7.8
         ]
-    }
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+    },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "pick_boron": [
+          {
+            "ready": 1
+          },
+          -7.8
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
 }
-{'ready'}
-ready
