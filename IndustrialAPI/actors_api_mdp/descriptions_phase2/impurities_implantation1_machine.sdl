@@ -1,46 +1,101 @@
-impurities_implantation1_machine{
-    "ready": {
+{
+  "id": "impurities_implantation1_service",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
         "config_impurities_implantation": [
-            {
-                "configured": 1.0
-            },
-            0.0
+          {
+            "configured": 1.0
+          },
+          0
         ]
-    },
-    "configured": {
+      },
+      "configured": {
         "checked_impurities_implantation": [
-            {
-                "executing": 0.95,
-                "broken": 0.05
-            },
-            0.0
+          {
+            "executing": 0.95,
+            "broken": 0.05
+          },
+          0
         ]
-    },
-    "executing": {
+      },
+      "executing": {
         "impurities_implantation": [
-            {
-                "ready": 0.95,
-                "broken": 0.05
-            },
-            -1.0
+          {
+            "ready": 0.95,
+            "broken": 0.05
+          },
+          -1
         ]
-    },
-    "broken": {
+      },
+      "broken": {
         "restore_impurities_implantation": [
-            {
-                "repairing": 1.0
-            },
-            -10.0
+          {
+            "repairing": 1
+          },
+          -10
         ]
-    },
-    "repairing": {
+      },
+      "repairing": {
         "repaired_impurities_implantation": [
-            {
-                "ready": 1.0
-            },
-            0.0
+          {
+            "ready": 1
+          },
+          0
         ]
-    }
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+  },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "config_impurities_implantation": [
+          {
+            "configured": 1.0
+          },
+          0
+        ]
+      },
+      "configured": {
+        "checked_impurities_implantation": [
+          {
+            "executing": 0.95,
+            "broken": 0.05
+          },
+          0
+        ]
+      },
+      "executing": {
+        "impurities_implantation": [
+          {
+            "ready": 0.95,
+            "broken": 0.05
+          },
+          -1
+        ]
+      },
+      "broken": {
+        "restore_impurities_implantation": [
+          {
+            "repairing": 1
+          },
+          -10
+        ]
+      },
+      "repairing": {
+        "repaired_impurities_implantation": [
+          {
+            "ready": 1
+          },
+          0
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
 }
-{'ready'}
-ready

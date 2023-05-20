@@ -1,29 +1,67 @@
-etching2_machine{
-    "available": {
+{
+  "id": "etching2_service",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "available": {
         "etching": [
-            {
-                "done": 0.5,
-                "broken": 0.5
-            },
-            -5.0
+          {
+            "done": 0.95,
+            "broken": 0.05
+          },
+          -5
         ]
-    },
-    "broken": {
+      },
+      "broken": {
         "check_etching": [
-            {
-                "available": 1.0
-            },
-            -10.0
+          {
+            "available": 1
+          },
+          -10
         ]
-    },
-    "done": {
+      },
+      "done": {
         "check_etching": [
-            {
-                "available": 1.0
-            },
-            0.0
+          {
+            "available": 1
+          },
+          0
         ]
-    }
+      }
+    },
+    "initial_state": "available",
+    "final_states": [
+      "available"
+    ]
+  },
+  "features": {
+    "transition_function": {
+      "available": {
+        "etching": [
+          {
+            "done": 0.95,
+            "broken": 0.05
+          },
+          -5
+        ]
+      },
+      "broken": {
+        "check_etching": [
+          {
+            "available": 1
+          },
+          -10
+        ]
+      },
+      "done": {
+        "check_etching": [
+          {
+            "available": 1
+          },
+          0
+        ]
+      }
+    },
+    "current_state": "available"
+  }
 }
-{'available'}
-available

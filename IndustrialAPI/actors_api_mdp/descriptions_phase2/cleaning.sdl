@@ -1,12 +1,33 @@
-cleaning{
-    "ready": {
+{
+  "id": "cleaning_service",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
         "cleaning": [
-            {
-                "ready": 1.0
-            },
-            -2.0
+          {
+            "ready": 1
+          },
+          -1
         ]
-    }
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+    },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "cleaning": [
+          {
+            "ready": 1
+          },
+          -1
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
 }
-{'ready'}
-ready
