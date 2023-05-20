@@ -1,12 +1,34 @@
-silicon_china{
-    "ready": {
+{
+  "id": "silicon_china_service",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
         "pick_silicon": [
-            {
-                "ready": 1.0
-            },
-            -11.7
+          {
+            "ready": 1
+          },
+          -11.7
         ]
-    }
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+    },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "pick_silicon": [
+          {
+            "ready": 1
+          },
+          -11.7
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
 }
-{'ready'}
-ready
+

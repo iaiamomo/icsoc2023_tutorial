@@ -1,19 +1,19 @@
 {
-  "id": "etching2_service",
+  "id": "resist_stripping_service",
   "attributes": {
     "type": "service",
     "transitions": {
       "available": {
-        "etching": [
+        "resist_stripping": [
           {
             "done": 0.95,
             "broken": 0.05
           },
-          -5
+          -1
         ]
       },
       "broken": {
-        "check_etching": [
+        "check_resist_stripping": [
           {
             "available": 1
           },
@@ -21,7 +21,7 @@
         ]
       },
       "done": {
-        "check_etching": [
+        "check_resist_stripping": [
           {
             "available": 1
           },
@@ -37,16 +37,16 @@
   "features": {
     "transition_function": {
       "available": {
-        "etching": [
+        "resist_stripping": [
           {
             "done": 0.95,
             "broken": 0.05
           },
-          -5
+          -1
         ]
       },
       "broken": {
-        "check_etching": [
+        "check_resist_stripping": [
           {
             "available": 1
           },
@@ -54,7 +54,7 @@
         ]
       },
       "done": {
-        "check_etching": [
+        "check_resist_stripping": [
           {
             "available": 1
           },

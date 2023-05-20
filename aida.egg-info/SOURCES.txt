@@ -1,0 +1,9 @@
+README.md
+setup.cfg
+setup.py
+aida.egg-info/PKG-INFO
+aida.egg-info/SOURCES.txt
+aida.egg-info/dependency_links.txt
+aida.egg-info/not-zip-safe
+aida.egg-info/requires.txt
+aida.egg-info/top_level.txt

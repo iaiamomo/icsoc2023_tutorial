@@ -1,12 +1,33 @@
-resist_usa{
-    "ready": {
+{
+  "id": "resist_usa_service",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
         "pick_resist": [
-            {
-                "ready": 1.0
-            },
-            -1.0
+          {
+            "ready": 1
+          },
+          -1
         ]
-    }
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+    },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "pick_resist": [
+          {
+            "ready": 1
+          },
+          -1
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
 }
-{'ready'}
-ready

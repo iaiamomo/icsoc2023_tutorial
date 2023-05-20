@@ -1,10 +1,10 @@
 {
-  "id": "development1_service",
+  "id": "impurities_implantation1_service",
   "attributes": {
     "type": "service",
     "transitions": {
       "ready": {
-        "config_development": [
+        "config_impurities_implantation": [
           {
             "configured": 1.0
           },
@@ -12,7 +12,7 @@
         ]
       },
       "configured": {
-        "checked_development": [
+        "checked_impurities_implantation": [
           {
             "executing": 0.95,
             "broken": 0.05
@@ -21,7 +21,7 @@
         ]
       },
       "executing": {
-        "development": [
+        "impurities_implantation": [
           {
             "ready": 0.95,
             "broken": 0.05
@@ -30,7 +30,7 @@
         ]
       },
       "broken": {
-        "restore_development": [
+        "restore_impurities_implantation": [
           {
             "repairing": 1
           },
@@ -38,7 +38,7 @@
         ]
       },
       "repairing": {
-        "repaired_development": [
+        "repaired_impurities_implantation": [
           {
             "ready": 1
           },
@@ -54,7 +54,7 @@
   "features": {
     "transition_function": {
       "ready": {
-        "config_development": [
+        "config_impurities_implantation": [
           {
             "configured": 1.0
           },
@@ -62,7 +62,7 @@
         ]
       },
       "configured": {
-        "checked_development": [
+        "checked_impurities_implantation": [
           {
             "executing": 0.95,
             "broken": 0.05
@@ -71,7 +71,7 @@
         ]
       },
       "executing": {
-        "development": [
+        "impurities_implantation": [
           {
             "ready": 0.95,
             "broken": 0.05
@@ -80,7 +80,7 @@
         ]
       },
       "broken": {
-        "restore_development": [
+        "restore_impurities_implantation": [
           {
             "repairing": 1
           },
@@ -88,7 +88,7 @@
         ]
       },
       "repairing": {
-        "repaired_development": [
+        "repaired_impurities_implantation": [
           {
             "ready": 1
           },

@@ -1,12 +1,33 @@
-copper_frame_usa{
-    "ready": {
+{
+  "id": "copper_frame_usa_service",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
         "pick_copper_frame": [
-            {
-                "ready": 1.0
-            },
-            -1.0
+          {
+            "ready": 1
+          },
+          -1
         ]
-    }
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+    },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "pick_copper_frame": [
+          {
+            "ready": 1
+          },
+          -1
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
 }
-{'ready'}
-ready

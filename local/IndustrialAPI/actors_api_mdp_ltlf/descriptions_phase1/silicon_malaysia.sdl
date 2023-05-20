@@ -1,12 +1,33 @@
-silicon_malaysia{
-    "ready": {
+{
+  "id": "silicon_malaysia_service",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
         "pick_silicon": [
-            {
-                "ready": 1.0
-            },
-            -14.73
+          {
+            "ready": 1
+          },
+          -14.73
         ]
-    }
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+    },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "pick_silicon": [
+          {
+            "ready": 1
+          },
+          -14.73
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
 }
-{'ready'}
-ready

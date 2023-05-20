@@ -1,46 +1,101 @@
-resist_coating_machine2{
-    "ready": {
+{
+  "id": "resist_coating2_service",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
         "config_resist_coating": [
-            {
-                "configured": 1.0
-            },
-            0.0
+          {
+            "configured": 1.0
+          },
+          0
         ]
-    },
-    "configured": {
+      },
+      "configured": {
         "checked_resist_coating": [
-            {
-                "executing": 0.95,
-                "broken": 0.05
-            },
-            0.0
+          {
+            "executing": 0.95,
+            "broken": 0.05
+          },
+          0
         ]
-    },
-    "executing": {
+      },
+      "executing": {
         "resist_coating": [
-            {
-                "ready": 0.95,
-                "broken": 0.05
-            },
-            -5.0
+          {
+            "ready": 0.95,
+            "broken": 0.05
+          },
+          -5
         ]
-    },
-    "broken": {
+      },
+      "broken": {
         "restore_resist_coating": [
-            {
-                "repairing": 1.0
-            },
-            -10.0
+          {
+            "repairing": 1
+          },
+          -10
         ]
-    },
-    "repairing": {
+      },
+      "repairing": {
         "repaired_resist_coating": [
-            {
-                "ready": 1.0
-            },
-            0.0
+          {
+            "ready": 1
+          },
+          0
         ]
-    }
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+  },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "config_resist_coating": [
+          {
+            "configured": 1.0
+          },
+          0
+        ]
+      },
+      "configured": {
+        "checked_resist_coating": [
+          {
+            "executing": 0.95,
+            "broken": 0.05
+          },
+          0
+        ]
+      },
+      "executing": {
+        "resist_coating": [
+          {
+            "ready": 0.95,
+            "broken": 0.05
+          },
+          -5
+        ]
+      },
+      "broken": {
+        "restore_resist_coating": [
+          {
+            "repairing": 1
+          },
+          -10
+        ]
+      },
+      "repairing": {
+        "repaired_resist_coating": [
+          {
+            "ready": 1
+          },
+          0
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
 }
-{'ready'}
-ready

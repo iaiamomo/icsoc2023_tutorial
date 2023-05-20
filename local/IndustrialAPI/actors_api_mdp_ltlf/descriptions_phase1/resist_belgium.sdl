@@ -1,12 +1,33 @@
-resist_belgium{
-    "ready": {
+{
+  "id": "resist_belgium_service",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
         "pick_resist": [
-            {
-                "ready": 1.0
-            },
-            -7.6
+          {
+            "ready": 1
+          },
+          -7.6
         ]
-    }
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+    },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "pick_resist": [
+          {
+            "ready": 1
+          },
+          -7.6
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
 }
-{'ready'}
-ready

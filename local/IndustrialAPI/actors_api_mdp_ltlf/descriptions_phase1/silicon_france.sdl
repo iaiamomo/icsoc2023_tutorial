@@ -1,12 +1,33 @@
-silicon_france{
-    "ready": {
+{
+  "id": "silicon_france_service",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
         "pick_silicon": [
-            {
-                "ready": 1.0
-            },
-            -7.6
+          {
+            "ready": 1
+          },
+          -7.6
         ]
-    }
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+    },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "pick_silicon": [
+          {
+            "ready": 1
+          },
+          -7.6
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
 }
-{'ready'}
-ready

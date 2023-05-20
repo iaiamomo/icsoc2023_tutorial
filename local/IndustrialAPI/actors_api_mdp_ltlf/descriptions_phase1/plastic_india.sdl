@@ -1,12 +1,33 @@
-plastic_india{
-    "ready": {
+{
+  "id": "plastic_india_service",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
         "pick_plastic": [
-            {
-                "ready": 1.0
-            },
-            -13.1
+          {
+            "ready": 1
+          },
+          -13.1
         ]
-    }
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+    },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "pick_plastic": [
+          {
+            "ready": 1
+          },
+          -13.1
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
 }
-{'ready'}
-ready

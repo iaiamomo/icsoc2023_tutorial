@@ -1,10 +1,10 @@
 {
-  "id": "silicon_usa_service",
+  "id": "packaging_service",
   "attributes": {
     "type": "service",
     "transitions": {
       "ready": {
-        "pick_silicon": [
+        "packaging": [
           {
             "ready": 1
           },
@@ -20,7 +20,7 @@
   "features": {
     "transition_function": {
       "ready": {
-        "pick_silicon": [
+        "packaging": [
           {
             "ready": 1
           },

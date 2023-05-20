@@ -1,12 +1,33 @@
-design_usa{
-    "ready": {
+{
+  "id": "design_usa_service",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
         "pick_buy_design": [
-            {
-                "ready": 1.0
-            },
-            -1.0
+          {
+            "ready": 1
+          },
+          -1
         ]
-    }
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+    },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "pick_buy_design": [
+          {
+            "ready": 1
+          },
+          -1
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
 }
-{'ready'}
-ready

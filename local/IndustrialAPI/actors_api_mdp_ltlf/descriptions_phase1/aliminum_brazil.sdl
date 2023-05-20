@@ -1,14 +1,14 @@
 {
-  "id": "silicon_usa_service",
+  "id": "aluminum_australia_service",
   "attributes": {
     "type": "service",
     "transitions": {
       "ready": {
-        "pick_silicon": [
+        "pick_aluminum": [
           {
             "ready": 1
           },
-          -1
+          -6.7
         ]
       }
     },
@@ -20,11 +20,11 @@
   "features": {
     "transition_function": {
       "ready": {
-        "pick_silicon": [
+        "pick_aluminum": [
           {
             "ready": 1
           },
-          -1
+          -6.7
         ]
       }
     },
