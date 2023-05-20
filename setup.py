@@ -1,10 +1,10 @@
 from setuptools import setup, find_packages
 
-setup(name='stochastic_service_composition',
+setup(name='aida',
       version='0.1.0',
-      description='Implementation of stochastic service composition.',
+      description='Implementation of a tool for the composition of Industrial APIs for resilience manufacturing.',
       license='MIT',
-      packages=find_packages(include='stochastic_service_composition*'),
+      packages=find_packages(include=['aida*']),
       zip_safe=False,
       install_requires=[
             "numpy",
@@ -12,11 +12,13 @@ setup(name='stochastic_service_composition',
             "websockets",
             "paho-mqtt",
             "requests",
-            "connexion[swagger-ui]",
             "logaut",
             "pythomata",
-            "flask",
-            "aiohttp",
-            "aiohttp_jinja2"
+            "networkx",
+            "pydotplus",
+            "datetime",
+            "connexion[swagger-ui]",
+            "aiohttp-jinja2",
+            "mdp_dp_rl @ git+https://github.com/luusi/mdp-dp-rl.git#egg=mdp_dp_rl"
       ]
-      )
+)

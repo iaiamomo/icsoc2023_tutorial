@@ -1,4 +1,3 @@
-
 from local.IndustrialAPI.utils.target import Target
 import random
 
