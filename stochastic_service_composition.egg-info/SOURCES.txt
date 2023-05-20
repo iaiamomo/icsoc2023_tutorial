@@ -1,0 +1,9 @@
+README.md
+setup.cfg
+setup.py
+stochastic_service_composition.egg-info/PKG-INFO
+stochastic_service_composition.egg-info/SOURCES.txt
+stochastic_service_composition.egg-info/dependency_links.txt
+stochastic_service_composition.egg-info/not-zip-safe
+stochastic_service_composition.egg-info/requires.txt
+stochastic_service_composition.egg-info/top_level.txt

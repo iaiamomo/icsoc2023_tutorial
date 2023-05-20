@@ -1,0 +1,11 @@
+numpy
+graphviz
+websockets
+paho-mqtt
+requests
+connexion[swagger-ui]
+logaut
+pythomata
+flask
+aiohttp
+aiohttp_jinja2
