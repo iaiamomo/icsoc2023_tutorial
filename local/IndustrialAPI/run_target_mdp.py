@@ -9,7 +9,7 @@ import websockets
 from websocket import WebSocket
 from websockets.exceptions import ConnectionClosedOK
 
-from local.IndustrialAPI.utils.target_simulator import TargetSimulator
+from local.IndustrialAPI.target_simulator import TargetSimulator
 from local.IndustrialAPI.actors_api_mdp.client_wrapper import WebSocketWrapper
 from local.IndustrialAPI.actors_api_mdp.data import TargetInstance
 from local.IndustrialAPI.actors_api_mdp.helpers import setup_logger

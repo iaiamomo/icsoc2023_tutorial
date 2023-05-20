@@ -1,25 +1,23 @@
-"""iapismdp utils functions for notebooks."""
+"""utils functions for notebooks."""
 import functools
 import tempfile
 from pathlib import Path
 
 from graphviz import Digraph
-from IPython.core.display import HTML, SVG, display, Image
-import cv2
-from mdp_dp_rl.algorithms.dp.dp_analytic import DPAnalytic
+from IPython.core.display import SVG, display, Image
 from mdp_dp_rl.processes.det_policy import DetPolicy
 from mdp_dp_rl.processes.mdp import MDP
 from mdp_dp_rl.processes.policy import Policy
 from mdp_dp_rl.utils.standard_typevars import VFDictType, QFDictType
 
-from aida.dfa_target import MdpDfa
-from aida.rendering import (
+from mdp_ltlf.dfa_target import MdpDfa
+from mdp.rendering import (
     service_to_graphviz,
     target_to_graphviz,
     mdp_to_graphviz,
 )
-from aida.services import Service
-from aida.target import Target
+from mdp.services import Service
+from mdp.target import Target
 
 _image_classes = {"png": Image, "svg": SVG}
 _default_format = "png"
