@@ -1,0 +1,39 @@
+{
+    "id": "cleaner5usa",
+    "attributes": {
+        "type": "Service_cle5",
+        "actions": {
+            "cleaning": {
+                "properties": {
+                    "type": "operation",
+                    "command": "clean_5",
+                    "cost": 5,
+                    "parameters": [
+                        "Material - w"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "w.cleaned:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "w.cleaned:true"
+                        ],
+                        "deleted": [
+                            "w.cleaned:false"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}

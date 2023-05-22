@@ -4,8 +4,8 @@ from typing import Sequence, Deque
 from mdp_dp_rl.processes.mdp import MDP
 from pythomata import SimpleDFA
 
-from mdp.services import Service, build_system_service
-from mdp.types import MDPDynamics
+from utils.services import Service, build_system_service
+from utils.types import MDPDynamics
 
 COMPOSITION_MDP_INITIAL_STATE = 0
 COMPOSITION_MDP_INITIAL_ACTION = "initial"

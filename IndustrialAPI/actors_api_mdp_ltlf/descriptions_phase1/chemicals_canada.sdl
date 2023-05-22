@@ -1,0 +1,33 @@
+{
+  "id": "chemicals_canada_service",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
+        "pick_chemicals": [
+          {
+            "ready": 1
+          },
+          -1.8
+        ]
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+    },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "pick_chemicals": [
+          {
+            "ready": 1
+          },
+          -1.8
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
+}

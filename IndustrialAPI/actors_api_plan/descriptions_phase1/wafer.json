@@ -1,0 +1,13 @@
+{
+    "id": "wafer",
+    "attributes": {
+        "type": "Material"
+    },
+    "features": {
+        "taken": {
+            "properties": {
+                "value": "false"
+            }
+        }
+    }
+}

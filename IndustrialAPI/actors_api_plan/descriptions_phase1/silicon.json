@@ -1,0 +1,13 @@
+{
+    "id": "silicon",
+    "attributes": {
+        "type": "SiliconMaterial"
+    },
+    "features": {
+        "taken": {
+            "properties": {
+                "value": "false"
+            }
+        }
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "id": "plastic",
+    "attributes": {
+        "type": "PlasticMaterial"
+    },
+    "features": {
+        "packed": {
+            "properties": {
+                "value": "false"
+            }
+        }
+    }
+}

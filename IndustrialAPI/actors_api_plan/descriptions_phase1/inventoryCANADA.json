@@ -1,0 +1,67 @@
+{
+    "id": "inventorycanada",
+    "attributes": {
+        "type": "Service_inv_ca",
+        "actions": {
+            "taking_resist": {
+                "properties": {
+                    "type": "operation",
+                    "command": "take_resist_ca",
+                    "cost": 2,
+                    "parameters": [
+                        "Design - d",
+                        "ResistMaterial - b"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "d.taken:true",
+                            "b.taken:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "b.taken:true"
+                        ],
+                        "deleted": [
+                            "b.taken:false"
+                        ]
+                    }
+                }
+            },
+            "taking_chemicals": {
+                "properties": {
+                    "type": "operation",
+                    "command": "take_chemicals_ca",
+                    "cost": 2,
+                    "parameters": [
+                        "Design - d",
+                        "ChemicalsMaterial - b"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "d.taken:true",
+                            "b.taken:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "b.taken:true"
+                        ],
+                        "deleted": [
+                            "b.taken:false"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}

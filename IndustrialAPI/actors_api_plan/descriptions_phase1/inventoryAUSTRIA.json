@@ -1,0 +1,41 @@
+{
+    "id": "inventoryaustria",
+    "attributes": {
+        "type": "Service_inv_aus",
+        "actions": {
+            "taking_resist": {
+                "properties": {
+                    "type": "operation",
+                    "command": "take_resist_aus",
+                    "cost": 8,
+                    "parameters": [
+                        "Design - d",
+                        "ResistMaterial - b"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "d.taken:true",
+                            "b.taken:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "b.taken:true"
+                        ],
+                        "deleted": [
+                            "b.taken:false"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}

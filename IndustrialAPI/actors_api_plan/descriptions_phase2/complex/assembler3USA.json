@@ -1,0 +1,46 @@
+{
+    "id": "assembler3usa",
+    "attributes": {
+        "type": "Service_ass3",
+        "actions": {
+            "assembling": {
+                "properties": {
+                    "type": "operation",
+                    "command": "assemble_3",
+                    "cost": 3,
+                    "parameters": [
+                        "Material - w",
+                        "CopperMaterial - c",
+                        "ChemicalsMaterial - ch"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "w.stripped:true",
+                            "ch.stripped:true",
+                            "w.assembled:false",
+                            "c.assembled:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "w.assembled:true",
+                            "c.assembled:true"
+                        ],
+                        "deleted": [
+                            "w.assembled:false",
+                            "c.assembled:false"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}

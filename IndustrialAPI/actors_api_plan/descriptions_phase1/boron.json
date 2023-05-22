@@ -1,0 +1,13 @@
+{
+    "id": "boron",
+    "attributes": {
+        "type": "BoronMaterial"
+    },
+    "features": {
+        "taken": {
+            "properties": {
+                "value": "false"
+            }
+        }
+    }
+}

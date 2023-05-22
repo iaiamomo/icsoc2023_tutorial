@@ -1,0 +1,67 @@
+{
+    "id": "inventorybrazil",
+    "attributes": {
+        "type": "Service_inv_br",
+        "actions": {
+            "taking_silicon": {
+                "properties": {
+                    "type": "operation",
+                    "command": "take_silicon_br",
+                    "cost": 6,
+                    "parameters": [
+                        "Design - d",
+                        "SiliconMaterial - s"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "d.taken:true",
+                            "s.taken:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "s.taken:true"
+                        ],
+                        "deleted": [
+                            "s.taken:false"
+                        ]
+                    }
+                }
+            },
+            "taking_aluminum": {
+                "properties": {
+                    "type": "operation",
+                    "command": "take_aluminum_br",
+                    "cost": 6,
+                    "parameters": [
+                        "Design - d",
+                        "AluminumMaterial - b"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "d.taken:true",
+                            "b.taken:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "b.taken:true"
+                        ],
+                        "deleted": [
+                            "b.taken:false"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}

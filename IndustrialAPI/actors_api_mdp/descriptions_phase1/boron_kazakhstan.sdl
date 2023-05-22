@@ -1,0 +1,33 @@
+{
+  "id": "boron_kazakhstan_service",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
+        "pick_boron": [
+          {
+            "ready": 1
+          },
+          -10.4
+        ]
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+    },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "pick_boron": [
+          {
+            "ready": 1
+          },
+          -10.4
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
+}

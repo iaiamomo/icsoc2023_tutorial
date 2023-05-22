@@ -1,0 +1,101 @@
+{
+  "id": "film_deposition1_service",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
+        "config_film_deposition": [
+          {
+            "configured": 1.0
+          },
+          0
+        ]
+      },
+      "configured": {
+        "checked_film_deposition": [
+          {
+            "executing": 0.95,
+            "broken": 0.05
+          },
+          0
+        ]
+      },
+      "executing": {
+        "film_deposition": [
+          {
+            "ready": 0.95,
+            "broken": 0.05
+          },
+          -1
+        ]
+      },
+      "broken": {
+        "restore_film_deposition": [
+          {
+            "repairing": 1
+          },
+          -10
+        ]
+      },
+      "repairing": {
+        "repaired_film_deposition": [
+          {
+            "ready": 1
+          },
+          0
+        ]
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+  },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "config_film_deposition": [
+          {
+            "configured": 1.0
+          },
+          0
+        ]
+      },
+      "configured": {
+        "checked_film_deposition": [
+          {
+            "executing": 0.95,
+            "broken": 0.05
+          },
+          0
+        ]
+      },
+      "executing": {
+        "film_deposition": [
+          {
+            "ready": 0.95,
+            "broken": 0.05
+          },
+          -1
+        ]
+      },
+      "broken": {
+        "restore_film_deposition": [
+          {
+            "repairing": 1
+          },
+          -10
+        ]
+      },
+      "repairing": {
+        "repaired_film_deposition": [
+          {
+            "ready": 1
+          },
+          0
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
+}

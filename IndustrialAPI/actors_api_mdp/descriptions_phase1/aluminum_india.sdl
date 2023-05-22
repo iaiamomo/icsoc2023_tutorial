@@ -1,0 +1,33 @@
+{
+  "id": "aluminum_india_service",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
+        "pick_aluminum": [
+          {
+            "ready": 1
+          },
+          -13.1
+        ]
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+    },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "pick_aluminum": [
+          {
+            "ready": 1
+          },
+          -13.1
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
+}

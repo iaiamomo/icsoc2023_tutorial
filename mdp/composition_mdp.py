@@ -4,9 +4,9 @@ from typing import Deque, Dict, List, Set, Tuple
 
 from mdp_dp_rl.processes.mdp import MDP
 
-from mdp.services import Service, build_system_service
-from mdp.target import Target
-from mdp.types import Action, State, MDPDynamics
+from utils.services import Service, build_system_service
+from utils.target import Target
+from utils.types import Action, State, MDPDynamics
 
 COMPOSITION_MDP_INITIAL_STATE = 0
 COMPOSITION_MDP_INITIAL_ACTION = "initial"

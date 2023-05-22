@@ -1,0 +1,48 @@
+{
+    "id": "depositer2usa",
+    "attributes": {
+        "type": "Service_dep2",
+        "actions": {
+            "depositing": {
+                "properties": {
+                    "type": "operation",
+                    "command": "deposit_2",
+                    "cost": 1,
+                    "parameters": [
+                        "Material - w",
+                        "SiliconMaterial - s",
+                        "AluminumMaterial - a"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "w.cleaned:true",
+                            "w.deposited:false",
+                            "s.deposited:false",
+                            "a.deposited:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "w.deposited:true",
+                            "s.deposited:true",
+                            "a.deposited:true"
+                        ],
+                        "deleted": [
+                            "w.deposited:false",
+                            "s.deposited:false",
+                            "a.deposited:false"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}

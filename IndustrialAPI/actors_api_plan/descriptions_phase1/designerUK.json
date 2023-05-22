@@ -1,0 +1,39 @@
+{
+    "id": "designeruk",
+    "attributes": {
+        "type": "Service_des_uk",
+        "actions": {
+            "taking_design": {
+                "properties": {
+                    "type": "operation",
+                    "command": "take_design_uk",
+                    "cost": 6,
+                    "parameters": [
+                        "Design - o"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "o.taken:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "o.taken:true"
+                        ],
+                        "deleted": [
+                            "o.taken:false"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}

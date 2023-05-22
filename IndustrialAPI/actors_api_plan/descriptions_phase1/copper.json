@@ -1,0 +1,13 @@
+{
+    "id": "copper",
+    "attributes": {
+        "type": "CopperMaterial"
+    },
+    "features": {
+        "taken": {
+            "properties": {
+                "value": "false"
+            }
+        }
+    }
+}
