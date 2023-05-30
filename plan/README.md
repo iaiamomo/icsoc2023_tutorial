@@ -18,7 +18,7 @@ cd downward
 
 ### How to run the code
 
-1. Define the descriptions of the manufacturing actors and run the Industrial APIs (see the instructions [here](IndustrialAPI/README.md))
+1. Define the descriptions of the manufacturing actors and run the Industrial APIs (see the instructions [here](../IndustrialAPI/README.md))
 
 5. Set the goal and the contextual informations inside [context.py](context.py). N.B.: some knowledge of automated planning is required.
 
