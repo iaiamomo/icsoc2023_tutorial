@@ -1,7 +1,7 @@
 from functools import singledispatch
 from typing import Dict
 
-from local.IndustrialAPI.actors_api_plan.data import ServiceInstance
+from IndustrialAPI.actors_api_plan.data import ServiceInstance
 
 class Message:
     TYPE: str   # variable
