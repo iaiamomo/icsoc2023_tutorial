@@ -1,11 +1,8 @@
 from functools import singledispatch
 from typing import Dict
 
-from local.IndustrialAPI.actors_api_mdp.utils import target_from_json
-from local.IndustrialAPI.actors_api_mdp.data import ServiceInstance, target_to_json, TargetInstance
-from local.IndustrialAPI.actors_api_mdp.helpers import TargetId
-from local.IndustrialAPI.actors_api_mdp.target import Target
-from local.IndustrialAPI.actors_api_mdp.types import MDPDynamics
+from IndustrialAPI.actors_api_mdp.data import ServiceInstance, target_to_json, TargetInstance
+from utils.types import MDPDynamics
 
 
 class Message:

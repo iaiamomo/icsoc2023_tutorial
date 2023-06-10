@@ -2,11 +2,11 @@ import dataclasses
 from enum import Enum
 from typing import Any, Dict
 
-from local.IndustrialAPI.actors_api_mdp.utils import target_from_json
-from local.IndustrialAPI.actors_api_mdp.helpers import ServiceId, TargetId
-from local.IndustrialAPI.actors_api_mdp.services import Service, build_service_from_transitions
-from local.IndustrialAPI.actors_api_mdp.target import Target
-from local.IndustrialAPI.actors_api_mdp.types import MDPDynamics, TargetDynamics
+from IndustrialAPI.actors_api_mdp.utils import target_from_json
+from IndustrialAPI.actors_api_mdp.helpers import ServiceId, TargetId
+from utils.services import Service, build_service_from_transitions
+from utils.target import Target
+from utils.types import MDPDynamics, TargetDynamics
 
 
 class ServiceType(Enum):

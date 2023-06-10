@@ -4,19 +4,16 @@ from typing import List
 
 from websocket import WebSocket
 
-from local.IndustrialAPI.actors_api_mdp.client.client import Client
-from local.IndustrialAPI.actors_api_mdp.client.api.health.app_server_api_get_health import asyncio_detailed as get_health
-from local.IndustrialAPI.actors_api_mdp.client.api.services.app_server_api_get_services import asyncio_detailed as get_services
-from local.IndustrialAPI.actors_api_mdp.client.api.services.app_server_api_get_target_request import \
-    asyncio_detailed as get_target_request
-from local.IndustrialAPI.actors_api_mdp.client.api.services.app_server_api_get_targets import asyncio_detailed as get_targets
-from local.IndustrialAPI.actors_api_mdp.client.api.services.app_server_api_execute_service_action import asyncio_detailed as execute_service_action
-from local.IndustrialAPI.actors_api_mdp.client.api.services.app_server_api_get_service import asyncio_detailed as get_service
-from local.IndustrialAPI.actors_api_mdp.client.api.services.app_server_api_do_maintenance import asyncio_detailed as do_maintenance
-from local.IndustrialAPI.actors_api_mdp.client.models import Service
-from local.IndustrialAPI.actors_api_mdp.data import ServiceInstance, TargetInstance
-from local.IndustrialAPI.actors_api_mdp.helpers import TargetId, ServiceId
-from local.IndustrialAPI.actors_api_mdp.messages import Message, from_json, to_json
+from IndustrialAPI.client import Client
+from IndustrialAPI.client.api.health.app_server_api_get_health import asyncio_detailed as get_health
+from IndustrialAPI.client.api.services.app_server_api_get_services import asyncio_detailed as get_services
+from IndustrialAPI.client.api.services.app_server_api_execute_service_action import asyncio_detailed as execute_service_action
+from IndustrialAPI.client.api.services.app_server_api_get_service import asyncio_detailed as get_service
+from IndustrialAPI.client.api.services.app_server_api_do_maintenance import asyncio_detailed as do_maintenance
+from IndustrialAPI.client.models import Service
+from IndustrialAPI.actors_api_mdp.data import ServiceInstance, TargetInstance
+from IndustrialAPI.actors_api_mdp.helpers import TargetId, ServiceId
+from IndustrialAPI.actors_api_mdp.messages import Message, from_json, to_json
 
 TIMEOUT = 60.0
 
