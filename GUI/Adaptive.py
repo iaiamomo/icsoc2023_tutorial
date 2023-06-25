@@ -1,8 +1,9 @@
 from tkinter import ttk
 import tkinter as tk
-from RunTime import RunTimePage
-from PreRunTime import PreRunTimePage
-from DesignTime import DesignTime
+from GUI.RunTime_lmdp import RunTimePage_lmdp
+from GUI.RunTime_plan import RunTimePage_plan
+from GUI.PreRunTime import PreRunTimePage
+from GUI.DesignTime import DesignTime
 from tkinter import filedialog
 from tkinter import Text
 from tkinter import END
@@ -37,7 +38,7 @@ class tkinterApp(tk.Tk):
         # initializing frames to an empty array
         self.frames = {} 
         # iterating through a tuple consisting of the different page layouts
-        for F in (StartPage, DesignTime, PreRunTimePage, RunTimePage):
+        for F in (StartPage, DesignTime, PreRunTimePage, RunTimePage_lmdp, RunTimePage_plan):
             frame = F(container, self)
             
             self.frames[F] = frame
@@ -53,17 +54,21 @@ class tkinterApp(tk.Tk):
         frame.tkraise()
 
 
-    def show_RunTimePage(self):
-        self.show_frame(RunTimePage)
+    def show_RunTimePage_lmdp(self):
+        self.show_frame(RunTimePage_lmdp)    
+
+    def get_RunTimePage_lmdp(self):
+        return self.frames[RunTimePage_lmdp]
+    
+    def show_RunTimePage_plan(self):
+        self.show_frame(RunTimePage_plan)    
+
+    def get_RunTimePage_plan(self):
+        return self.frames[RunTimePage_plan]
     
 
     def getFrame(self, cont):
         return self.frames[cont]
-    
-
-    def get_RunTimePage(self):
-        return self.frames[RunTimePage]
-    
 
     def get_PreRunTimePage(self):
         return self.frames[PreRunTimePage]
@@ -108,6 +113,7 @@ class tkinterApp(tk.Tk):
             )
         config_json = json.load(open(config_file))
         folder = config_json['folder']
+        mode = config_json['mode']
         if not os.path.isdir(folder):
             msgbox.showerror("Error", "The folder specified in the config file does not exist")
             self.show_mainPage()
@@ -118,10 +124,16 @@ class tkinterApp(tk.Tk):
         #temp.check_files_config()
         temp.set_files()
 
-        temp : RunTimePage = self.getFrame(RunTimePage)
-        temp.config_file = str(config_file)
-        temp.set_image_services()
-        temp.refreshComboBox()                   
+        if mode == 'lmdp_ltlf':
+            temp : RunTimePage_lmdp = self.getFrame(RunTimePage_lmdp)
+            temp.config_file = str(config_file)
+            temp.set_image_services()
+            temp.refreshComboBox()
+        elif mode == 'plan':
+            temp : RunTimePage_plan = self.getFrame(RunTimePage_plan)
+            temp.config_file = str(config_file)
+            temp.set_image_services()
+            temp.refreshComboBox()
 
 
 # first window frame startpage  --START PAGE--

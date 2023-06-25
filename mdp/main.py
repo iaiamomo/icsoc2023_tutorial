@@ -6,10 +6,10 @@ from typing import List
 
 from mdp_dp_rl.processes.mdp import MDP
 
-from IndustrialAPI.utils.target_simulator import TargetSimulator
-from IndustrialAPI.actors_api_mdp.client_wrapper import ClientWrapper
-from IndustrialAPI.actors_api_mdp.data import ServiceInstance, TargetInstance, ServiceId
-from IndustrialAPI.actors_api_mdp.helpers import setup_logger
+from OLDIndustrialAPI.utils.target_simulator import TargetSimulator
+from OLDIndustrialAPI.actors_api_mdp.client_wrapper import ClientWrapper
+from OLDIndustrialAPI.actors_api_mdp.data import ServiceInstance, TargetInstance, ServiceId
+from OLDIndustrialAPI.actors_api_mdp.helpers import setup_logger
 from mdp.composition_mdp import composition_mdp
 
 

@@ -4,11 +4,11 @@ from typing import List
 
 from websocket import WebSocket
 
-from IndustrialAPI.client import Client
-from IndustrialAPI.client.api.services.app_server_api_get_services import asyncio_detailed as get_services
-from IndustrialAPI.client.api.services.app_server_api_execute_service_action import asyncio_detailed as execute_service_action
-from IndustrialAPI.client.api.services.app_server_api_get_service import asyncio_detailed as get_service
-from IndustrialAPI.client.models import Service
+from IndustrialAPI.actors_api_plan.client import Client
+from IndustrialAPI.actors_api_plan.client.api.services.app_server_api_get_services import asyncio_detailed as get_services
+from IndustrialAPI.actors_api_plan.client.api.services.app_server_api_execute_service_action import asyncio_detailed as execute_service_action
+from IndustrialAPI.actors_api_plan.client.api.services.app_server_api_get_service import asyncio_detailed as get_service
+from IndustrialAPI.actors_api_plan.client.models import Service
 
 from IndustrialAPI.actors_api_plan.actor import Actor
 from IndustrialAPI.actors_api_plan.messages import Message, from_json, to_json

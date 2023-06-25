@@ -5,11 +5,11 @@ from typing import List
 
 from mdp_dp_rl.processes.mdp import MDP
 
-from IndustrialAPI.run_target_mdp_ltlf import target_dfa, TargetDFA
+from OLDIndustrialAPI.run_target_mdp_ltlf import target_dfa, TargetDFA
 
-from IndustrialAPI.actors_api_mdp_ltlf.client_wrapper import ClientWrapper
-from IndustrialAPI.actors_api_mdp_ltlf.data import ServiceInstance, TargetInstance, ServiceId
-from IndustrialAPI.actors_api_mdp_ltlf.helpers import setup_logger
+from OLDIndustrialAPI.actors_api_mdp_ltlf.client_wrapper import ClientWrapper
+from OLDIndustrialAPI.actors_api_mdp_ltlf.data import ServiceInstance, TargetInstance, ServiceId
+from OLDIndustrialAPI.actors_api_mdp_ltlf.helpers import setup_logger
 from mdp_ltlf.composition_mdp_ltlf import composition_mdp_ltlf
 
 logger = setup_logger("orchestrator")

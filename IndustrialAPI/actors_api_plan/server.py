@@ -280,7 +280,7 @@ class Server:
         return self._api
 
     def run(self, port: int = 8080) -> None:
-        from app import app
+        from IndustrialAPI.actors_api_plan.app import app
         self._overwrite_sigint_handler()
         task = self._loop.create_task(self._server.serve())
         app.run(port=port, debug=True, loop=self._loop)

@@ -48,8 +48,16 @@ class PreRunTimePage(tk.Frame):
 
 
     def execute(self):
+        with open(self.config_file) as json_file:
+            data = json.load(json_file)
+
+        mode = data["mode"]
+
         if (len(self.targetsListBox.get_children())):
-            self.controller.show_RunTimePage()
+            if mode == "lmdp_ltlf":
+                self.controller.show_RunTimePage_lmdp()
+            elif mode == "plan":
+                self.controller.show_RunTimePage_plan()
         else:
             msgbox.showerror("check your files", "Please, check the .tdl file and try again.")
             self.controller.show_mainPage()
@@ -127,5 +135,6 @@ class PreRunTimePage(tk.Frame):
 
     def goHome(self):
         self.resetPage()
-        self.controller.get_RunTimePage().resetPage()
+        self.controller.get_RunTimePage_lmdp().resetPage()
+        self.controller.get_RunTimePage_plan().resetPage()
         self.controller.show_mainPage()

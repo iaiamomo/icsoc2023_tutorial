@@ -2,10 +2,9 @@ from abc import ABC, abstractmethod
 import copy
 from typing import Optional, Dict
 
-from utils.constants import DEFAULT_DEGRADATION_COST, DEFAULT_DEGRADATION_PROBABILITY, \
-    DEFAULT_MAX_BROKEN_PROB
-from utils.services import Service
-from utils.types import State
+from IndustrialAPI.actors_api_lmdp_ltlf.services import Service
+from IndustrialAPI.utils.types import State
+import IndustrialAPI.utils.constants as constants
 
 
 class AbstractServiceWrapper(ABC):
@@ -81,12 +80,8 @@ class NormalServiceWrapper(AbstractServiceWrapper):
 
 class BreakableServiceWrapper(AbstractServiceWrapper):
 
-    AVAILABLE_STATE_NAME = "available"
-    DONE_STATE_NAME = "done"
-    BROKEN_STATE_NAME = "broken"
-
-    def __init__(self, service: Service, degradation_cost: float = DEFAULT_DEGRADATION_COST, degradation_probability: float = DEFAULT_DEGRADATION_PROBABILITY,
-                 max_broken_prob: float = DEFAULT_MAX_BROKEN_PROB):
+    def __init__(self, service: Service, degradation_cost: float = constants.DEFAULT_DEGRADATION_COST, degradation_probability: float = constants.DEFAULT_DEGRADATION_PROBABILITY,
+                 max_broken_prob: float = constants.DEFAULT_MAX_BROKEN_PROB):
         super().__init__(service)
         self.check_breakable_service(service)
         self._degradation_cost = degradation_cost
@@ -96,15 +91,16 @@ class BreakableServiceWrapper(AbstractServiceWrapper):
     @classmethod
     def check_breakable_service(cls, service) -> None:
         """Check that the wrapped service is of type "breakable"."""
-        assert service.states == {cls.AVAILABLE_STATE_NAME, cls.DONE_STATE_NAME, cls.BROKEN_STATE_NAME}
-        # check transitions from available
-        transitions_from_available_state = service.transition_function[cls.AVAILABLE_STATE_NAME]
-        assert len(transitions_from_available_state) == 1
-        action, (next_state_dist, reward) = list(transitions_from_available_state.items())[0]
-        assert set(next_state_dist.keys()) == {cls.DONE_STATE_NAME, cls.BROKEN_STATE_NAME}
+        assert service.states == {constants.READY_STATE_NAME, constants.CONFIGURED_STATE_NAME, constants.EXECUTING_STATE_NAME, constants.BROKEN_STATE_NAME, constants.REPAIRING_STATE_NAME}
+        '''
+        # check transitions from ready
+        transitions_from_ready_state = service.transition_function[cls.READY_STATE_NAME]
+        assert len(transitions_from_ready_state) == 1
+        action, (next_state_dist, reward) = list(transitions_from_ready_state.items())[0]
+        assert set(next_state_dist.keys()) == {cls.READY_STATE_NAME, cls.CONFIGURED_STATE_NAME}
 
-        # check transitions from done
-        transitions_from_done_state = service.transition_function[cls.DONE_STATE_NAME]
+        # check transitions from configured
+        transitions_from_done_state = service.transition_function[cls.READY_STATE_NAME]
         assert len(transitions_from_done_state) == 1
         check_action, (next_state_dist, reward) = list(transitions_from_done_state.items())[0]
         assert check_action == f"check_{action}"
@@ -116,25 +112,26 @@ class BreakableServiceWrapper(AbstractServiceWrapper):
         check_action, (next_state_dist, reward) = list(transitions_from_broken_state.items())[0]
         assert check_action == f"check_{action}"
         assert set(next_state_dist.keys()) == {cls.AVAILABLE_STATE_NAME}
+        '''
 
     def update(self, starting_state: State, action_name: str):
         """Update the probability."""
-        if starting_state == self.BROKEN_STATE_NAME:
+        if starting_state == constants.BROKEN_STATE_NAME:
             self.reset()
             return
-        if starting_state == self.DONE_STATE_NAME:
-            return
+        if starting_state == constants.EXECUTING_STATE_NAME:
+            transitions_from_executing_state = self._current_transition_function[constants.EXECUTING_STATE_NAME]
+            action = list(transitions_from_executing_state.keys())[0]
 
-        transitions_from_available_state = self._current_transition_function[self.AVAILABLE_STATE_NAME]
-        action = list(transitions_from_available_state.keys())[0]
+            # update prob
+            old_broken_prob = transitions_from_executing_state[action][0][constants.BROKEN_STATE_NAME]
+            new_broken_prob = 0.12345 #min(self._max_broken_probability, old_broken_prob + self._degradation_probability)
+            transitions_from_executing_state[action][0][constants.BROKEN_STATE_NAME] = new_broken_prob
+            transitions_from_executing_state[action][0][constants.READY_STATE_NAME] = 1.0 - new_broken_prob
 
-        # update prob
-        old_broken_prob = transitions_from_available_state[action][0][self.BROKEN_STATE_NAME]
-        new_broken_prob = min(self._max_broken_probability, old_broken_prob + self._degradation_probability)
-        transitions_from_available_state[action][0][self.BROKEN_STATE_NAME] = new_broken_prob
-        transitions_from_available_state[action][0][self.DONE_STATE_NAME] = 1.0 - new_broken_prob
-
-        # update cost
-        old_cost = transitions_from_available_state[action][1]
-        new_cost = old_cost - self._degradation_cost
-        transitions_from_available_state[action][1] = new_cost
+            # update cost
+            old_cost = transitions_from_executing_state[action][1]
+            new_cost = [old_cost[0] - self._degradation_cost, old_cost[1]]
+            transitions_from_executing_state[action][1] = new_cost
+        
+        return

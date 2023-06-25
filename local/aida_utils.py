@@ -7,16 +7,16 @@ from aida.lmdp import LMDP
 
 from aida.constants import GAMMAS
 from aida.lvi import lexicographic_value_iteration
-from local.IndustrialAPI.run_target_lmdp_ltlf import target_dfa, TargetDFA
+from IndustrialAPI.run_target_lmdp_ltlf import target_dfa, TargetDFA
 
-from local.IndustrialAPI.actors_api_lmdp_ltlf.client_wrapper import ClientWrapper
-from local.IndustrialAPI.actors_api_lmdp_ltlf.data import ServiceInstance
+from IndustrialAPI.actors_api_lmdp_ltlf.client_wrapper import ClientWrapper
+from IndustrialAPI.actors_api_lmdp_ltlf.data import ServiceInstance
 from aida.lmdp import compute_composition_lmdp
 
 
 class AIDAUtils:
 
-    def __init__(self, dfa_path, queue):
+    def __init__(self, dfa_path):
         self.client = ClientWrapper("localhost", 8080)
 
         self.dfa_path = dfa_path
@@ -26,8 +26,6 @@ class AIDAUtils:
         self.set_targetDFA()
 
         self.policy : DetPolicy = None
-
-        self.queue = queue
 
     def set_targetDFA(self):
         self.dfa_target = target_dfa(Path(self.dfa_path))

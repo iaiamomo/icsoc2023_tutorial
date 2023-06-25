@@ -1,0 +1,33 @@
+{
+  "id": "smart_tester2",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
+        "running_in": [
+          {
+            "ready": 1
+          },
+          [-1.0, 1.0]
+        ]
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+    },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "running_in": [
+          {
+            "ready": 1
+          },
+          [-1.0, 1.0]
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
+}

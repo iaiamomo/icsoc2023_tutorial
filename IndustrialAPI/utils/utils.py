@@ -5,21 +5,20 @@ from pathlib import Path
 
 from graphviz import Digraph
 from IPython.core.display import HTML, SVG, display, Image
-import cv2
 from mdp_dp_rl.algorithms.dp.dp_analytic import DPAnalytic
 from mdp_dp_rl.processes.det_policy import DetPolicy
 from mdp_dp_rl.processes.mdp import MDP
 from mdp_dp_rl.processes.policy import Policy
 from mdp_dp_rl.utils.standard_typevars import VFDictType, QFDictType
 
-from IndustrialAPI.utils.dfa_target import MdpDfa
-from utils.rendering import (
+from aida.dfa_target import MdpDfa
+from aida.rendering import (
     service_to_graphviz,
     target_to_graphviz,
     mdp_to_graphviz,
 )
-from utils.services import Service
-from utils.target import Target
+from aida.services import Service
+from aida.target import Target
 
 _image_classes = {"png": Image, "svg": SVG}
 _default_format = "png"

@@ -1,4 +1,5 @@
-from utils.target import Target
+
+from IndustrialAPI.utils.target import Target
 import random
 
 

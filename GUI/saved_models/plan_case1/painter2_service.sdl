@@ -1,0 +1,33 @@
+{
+  "id": "painter2",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
+        "painting": [
+          {
+            "ready": 1
+          },
+          [-1.0, 1.0]
+        ]
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+    },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "painting": [
+          {
+            "ready": 1
+          },
+          [-1.0, 1.0]
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
+}
