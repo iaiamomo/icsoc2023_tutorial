@@ -10,11 +10,11 @@ import websockets
 from websocket import WebSocket
 from websockets.exceptions import ConnectionClosedOK
 
-from local.IndustrialAPI.actors_api_plan.client_wrapper import WebSocketWrapper
-from local.IndustrialAPI.actors_api_plan.data import ServiceInstance
-from local.IndustrialAPI.actors_api_plan.actor import Action
-from actors_api_plan.helpers import setup_logger
-from actors_api_plan.messages import from_json, Message, Register, Update, \
+from IndustrialAPI.actors_api_plan.client_wrapper import WebSocketWrapper
+from IndustrialAPI.actors_api_plan.data import ServiceInstance
+from IndustrialAPI.actors_api_plan.actor import Action
+from IndustrialAPI.actors_api_plan.helpers import setup_logger
+from IndustrialAPI.actors_api_plan.messages import from_json, Message, Register, Update, \
     ExecuteServiceAction, ExecutionResult
 
 #from helpers import normpdf

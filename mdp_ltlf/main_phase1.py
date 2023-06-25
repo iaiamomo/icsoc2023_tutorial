@@ -5,8 +5,7 @@ from typing import List
 
 from mdp_dp_rl.processes.mdp import MDP
 
-from local.run_target_mdp_ltlf import target_dfa, TargetDFA
-from local.target_dfa_simulator import TargetSimulatorDFA
+from IndustrialAPI.run_target_mdp_ltlf import target_dfa, TargetDFA
 
 from IndustrialAPI.actors_api_mdp_ltlf.client_wrapper import ClientWrapper
 from IndustrialAPI.actors_api_mdp_ltlf.data import ServiceInstance, TargetInstance, ServiceId

@@ -1,7 +1,7 @@
 import dataclasses
 from typing import Any, Dict
 
-from local.IndustrialAPI.actors_api_plan.actor import Actor, Action, build_actor_from_json
+from IndustrialAPI.actors_api_plan.actor import Actor, Action, build_actor_from_json
 
 
 @dataclasses.dataclass(eq=True)
