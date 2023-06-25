@@ -1,0 +1,101 @@
+{
+  "id": "stator",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
+        "config_stator_builder": [
+          {
+            "configured": 1.0
+          },
+          [0.0, 0.0]
+        ]
+      },
+      "configured": {
+        "checked_stator_builder": [
+          {
+            "executing": 0.95,
+            "broken": 0.05
+          },
+          [0.0, 0.0]
+          ]
+      },
+      "executing": {
+        "build_retrieve_stator": [
+          {
+            "ready": 0.95,
+            "broken": 0.05
+          },
+          [-1.0, 1.0]
+        ]
+      },
+      "broken": {
+        "restore_stator_builder": [
+          {
+            "repairing": 1
+          },
+          [-1.0, 0.0]
+        ]
+      },
+      "repairing": {
+        "repaired_stator_builder": [
+          {
+            "ready": 1
+          },
+          [0.0, 0.0]
+        ]
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+  },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "config_stator_builder": [
+          {
+            "configured": 1.0
+          },
+          [0.0, 0.0]
+        ]
+      },
+      "configured": {
+        "checked_stator_builder": [
+          {
+            "executing": 0.95,
+            "broken": 0.05
+          },
+          [0.0, 0.0]
+          ]
+      },
+      "executing": {
+        "build_retrieve_stator": [
+          {
+            "ready": 0.95,
+            "broken": 0.05
+          },
+          [-1.0, 1.0]
+        ]
+      },
+      "broken": {
+        "restore_stator_builder": [
+          {
+            "repairing": 1
+          },
+          [-1.0, 0.0]
+        ]
+      },
+      "repairing": {
+        "repaired_stator_builder": [
+          {
+            "ready": 1
+          },
+          [0.0, 0.0]
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
+}

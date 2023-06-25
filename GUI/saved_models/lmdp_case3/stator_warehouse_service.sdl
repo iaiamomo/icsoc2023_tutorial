@@ -1,0 +1,33 @@
+{
+  "id": "stator_warehouse",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
+        "build_retrieve_stator": [
+          {
+            "ready": 1
+          },
+          [-5.0, 0.5]
+        ]
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+    },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "build_retrieve_stator": [
+          {
+            "ready": 1
+          },
+          [-5.0, 0.5]
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
+}

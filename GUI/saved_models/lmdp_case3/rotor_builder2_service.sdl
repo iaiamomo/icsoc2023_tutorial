@@ -1,0 +1,101 @@
+{
+  "id": "rotor2",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
+        "config_rotor_builder": [
+          {
+            "configured": 1.0
+          },
+          [0.0, 0.0]
+        ]
+      },
+      "configured": {
+        "checked_rotor_builder": [
+          {
+            "executing": 0.95,
+            "broken": 0.05
+          },
+          [0.0, 0.0]
+          ]
+      },
+      "executing": {
+        "build_retrieve_rotor": [
+          {
+            "ready": 0.95,
+            "broken": 0.05
+          },
+          [-1.0, 2.5]
+        ]
+      },
+      "broken": {
+        "restore_rotor_builder": [
+          {
+            "repairing": 1
+          },
+          [-1.0, 0.0]
+        ]
+      },
+      "repairing": {
+        "repaired_rotor_builder": [
+          {
+            "ready": 1
+          },
+          [0.0, 0.0]
+        ]
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+  },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "config_rotor_builder": [
+          {
+            "configured": 1.0
+          },
+          [0.0, 0.0]
+        ]
+      },
+      "configured": {
+        "checked_rotor_builder": [
+          {
+            "executing": 0.95,
+            "broken": 0.05
+          },
+          [0.0, 0.0]
+        ]
+      },
+      "executing": {
+        "build_retrieve_rotor": [
+          {
+            "ready": 0.95,
+            "broken": 0.05
+          },
+          [-1.0, 2.5]
+        ]
+      },
+      "broken": {
+        "restore_rotor_builder": [
+          {
+            "repairing": 1
+          },
+          [-1.0, 0.0]
+        ]
+      },
+      "repairing": {
+        "repaired_rotor_builder": [
+          {
+            "ready": 1
+          },
+          [0.0, 0.0]
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
+}

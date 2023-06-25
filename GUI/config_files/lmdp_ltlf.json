@@ -1,0 +1,91 @@
+{
+	"image_path": "factory_layout.jpg",
+	"folder": "saved_models/lmdp_case1",
+	"mode": "lmdp_ltlf",
+	"breaking_type": 0,
+	"target_file": "target.tdl",
+	"matrix": {
+		"rows": 6,
+		"columns": 7
+	},
+	"services": [
+		{
+			"name_file": "stator_warehouse_service.sdl",
+			"x": 0,
+			"y": 1,
+			"label": "stator_warehouse"
+		},
+		{
+			"name_file": "stator_builder_service.sdl",
+			"x": 0,
+			"y": 2,
+			"label": "stator"
+		},
+		{
+			"name_file": "rotor_builder2_service.sdl",
+			"x": 1,
+			"y": 2,
+			"label": "rotor2"
+		},
+		{
+			"name_file": "rotor_warehouse_service.sdl",
+			"x": 2,
+			"y": 2,
+			"label": "rotor_warehouse"
+		},
+		{
+			"name_file": "inverter_warehouse_service.sdl",
+			"x": 3,
+			"y": 2,
+			"label": "inverter_warehouse"
+		},
+		{
+			"name_file": "assembler1_service.sdl",
+			"x": 5,
+			"y": 2,
+			"label": "assembler1"
+		},		
+		{
+			"name_file": "mechanical_engineer_service.sdl",
+			"x": 6,
+			"y": 2,
+			"label": "mechanical_engineer"
+		},
+		{
+			"name_file": "smart_tester1_service.sdl",
+			"x": 3,
+			"y": 3,
+			"label": "smart_tester1"
+		},
+		{
+			"name_file": "smart_tester2_service.sdl",
+			"x": 4,
+			"y": 3,
+			"label": "smart_tester2"
+		},
+		{
+			"name_file": "assembler2_service.sdl",
+			"x": 5,
+			"y": 3,
+			"label": "assembler2"
+		},
+		{
+			"name_file": "painter1_service.sdl",
+			"x": 6,
+			"y": 3,
+			"label": "painter1"
+		},
+		{
+			"name_file": "rotor_builder1_service.sdl",
+			"x": 0,
+			"y": 4,
+			"label": "rotor1"
+		},
+		{
+			"name_file": "painter2_service.sdl",
+			"x": 6,
+			"y": 4,
+			"label": "painter2"
+		}
+	]
+}

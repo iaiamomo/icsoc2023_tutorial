@@ -1,0 +1,10 @@
+{
+  "id": "<service_name>",
+  "attributes": {
+      "type": "<service_type>",
+      "_comment": "static properties"
+  },
+  "features": {
+      "_comment": "dynamic properties"
+  }
+}

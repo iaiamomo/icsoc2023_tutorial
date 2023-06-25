@@ -1,0 +1,57 @@
+{
+  "id": "mechanical_engineer",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
+        "electric_test": [
+          {
+            "ready": 1
+          },
+          [
+            -1.0,
+            1.0
+          ]
+        ],
+        "static_test": [
+          {
+            "ready": 1
+          },
+          [
+            -1.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+  },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "electric_test": [
+          {
+            "ready": 1
+          },
+          [
+            -1.0,
+            1.0
+          ]
+        ],
+        "static_test": [
+          {
+            "ready": 1
+          },
+          [
+            -1.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
+}

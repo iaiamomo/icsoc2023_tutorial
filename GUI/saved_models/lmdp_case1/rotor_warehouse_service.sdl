@@ -1,0 +1,33 @@
+{
+  "id": "rotor_warehouse",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
+        "build_retrieve_rotor": [
+          {
+            "ready": 1
+          },
+          [-30.0, 1.0]
+        ]
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+    },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "build_retrieve_rotor": [
+          {
+            "ready": 1
+          },
+          [-30.0, 1.0]
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
+}
