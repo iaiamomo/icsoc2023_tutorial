@@ -1,101 +1,39 @@
 {
   "id": "rotor2",
   "attributes": {
-    "type": "service",
-    "transitions": {
-      "ready": {
-        "config_rotor_builder": [
-          {
-            "configured": 1.0
+    "type": "ServiceRotor",
+    "actions": {
+      "building_rotor": {
+        "properties": {
+          "type": "operation",
+          "command": "build_rotor",
+          "cost": 1,
+          "parameters": [
+            "ObjectRotor - o"
+          ],
+          "requirements": {
+            "positive": [
+              "o.built:false",
+              "status:available"
+            ]
           },
-          [-1.0, 0.0]
-        ]
-      },
-      "configured": {
-        "checked_rotor_builder": [
-          {
-            "executing": 0.95,
-            "broken": 0.05
-          },
-          [-2.0, 0.0]
-          ]
-      },
-      "executing": {
-        "build_retrieve_rotor": [
-          {
-            "ready": 0.95,
-            "broken": 0.05
-          },
-          [-1.0, 2.5]
-        ]
-      },
-      "broken": {
-        "restore_rotor_builder": [
-          {
-            "repairing": 1
-          },
-          [-1.0, 0.0]
-        ]
-      },
-      "repairing": {
-        "repaired_rotor_builder": [
-          {
-            "ready": 1
-          },
-          [-3.0, 0.0]
-        ]
+          "effects": {
+            "added": [
+              "o.built:true"
+            ],
+            "deleted": [
+              "o.built:false"
+            ]
+          }
+        }
       }
-    },
-    "initial_state": "ready",
-    "final_states": [
-      "ready"
-    ]
+    }
   },
   "features": {
-    "transition_function": {
-      "ready": {
-        "config_rotor_builder": [
-          {
-            "configured": 1.0
-          },
-          [-1.0, 0.0]
-        ]
-      },
-      "configured": {
-        "checked_rotor_builder": [
-          {
-            "executing": 0.95,
-            "broken": 0.05
-          },
-          [-2.0, 0.0]
-        ]
-      },
-      "executing": {
-        "build_retrieve_rotor": [
-          {
-            "ready": 0.95,
-            "broken": 0.05
-          },
-          [-1.0, 2.5]
-        ]
-      },
-      "broken": {
-        "restore_rotor_builder": [
-          {
-            "repairing": 1
-          },
-          [-1.0, 0.0]
-        ]
-      },
-      "repairing": {
-        "repaired_rotor_builder": [
-          {
-            "ready": 1
-          },
-          [-3.0, 0.0]
-        ]
+    "status":{
+      "properties": {
+        "value": "available"
       }
-    },
-    "current_state": "ready"
+    }
   }
 }

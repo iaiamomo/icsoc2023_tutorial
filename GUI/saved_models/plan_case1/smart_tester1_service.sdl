@@ -1,33 +1,40 @@
 {
   "id": "smart_tester1",
   "attributes": {
-    "type": "service",
-    "transitions": {
-      "ready": {
-        "running_in": [
-          {
-            "ready": 1
+    "type": "ServiceSmartTester",
+    "actions": {
+      "running_in_motor": {
+        "properties": {
+          "type": "operation",
+          "command": "run_in_motor",
+          "cost": 2,
+          "parameters": [
+            "ObjectMotor - o"
+          ],
+          "requirements": {
+            "positive": [
+              "o.assembled:true",
+              "o.run_in:false",
+              "status:available"
+            ]
           },
-          [-2.5, 2.5]
-        ]
+          "effects": {
+            "added": [
+              "o.run_in:true"
+            ],
+            "deleted": [
+              "o.run_in:false"
+            ]
+          }
+        }
       }
-    },
-    "initial_state": "ready",
-    "final_states": [
-      "ready"
-    ]
-    },
+    }
+  },
   "features": {
-    "transition_function": {
-      "ready": {
-        "running_in": [
-          {
-            "ready": 1
-          },
-          [-2.5, 2.5]
-        ]
+    "status":{
+      "properties": {
+        "value": "available"
       }
-    },
-    "current_state": "ready"
+    }
   }
 }

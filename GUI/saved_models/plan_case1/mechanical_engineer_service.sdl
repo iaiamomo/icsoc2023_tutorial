@@ -1,57 +1,65 @@
 {
   "id": "mechanical_engineer",
   "attributes": {
-    "type": "service",
-    "transitions": {
-      "ready": {
-        "electric_test": [
-          {
-            "ready": 1
+    "type": "ServiceEngineer",
+    "actions": {
+      "el_testing_motor": {
+        "properties": {
+          "type": "operation",
+          "command": "el_test_motor",
+          "cost": 2,
+          "parameters": [
+            "ObjectMotor - o"
+          ],
+          "requirements": {
+            "positive": [
+              "o.assembled:true",
+              "o.el_test:false",
+              "status:available"
+            ]
           },
-          [
-            -1.0,
-            1.0
-          ]
-        ],
-        "static_test": [
-          {
-            "ready": 1
+          "effects": {
+            "added": [
+              "o.el_test:true"
+            ],
+            "deleted": [
+              "o.el_test:false"
+            ]
+          }
+        }
+      },
+      "st_testing_motor": {
+        "properties": {
+          "type": "operation",
+          "command": "st_test_motor",
+          "cost": 1,
+          "parameters": [
+            "ObjectMotor - o"
+          ],
+          "requirements": {
+            "positive": [
+              "o.assembled:true",
+              "o.st_test:false",
+              "status:available"
+            ]
           },
-          [
-            -1.0,
-            1.0
-          ]
-        ]
+          "effects": {
+            "added": [
+              "o.st_test:true"
+            ],
+            "deleted": [
+              "o.st_test:false"
+            ]
+          }
+        }
       }
-    },
-    "initial_state": "ready",
-    "final_states": [
-      "ready"
-    ]
+    }
   },
   "features": {
-    "transition_function": {
-      "ready": {
-        "electric_test": [
-          {
-            "ready": 1
-          },
-          [
-            -1.0,
-            1.0
-          ]
-        ],
-        "static_test": [
-          {
-            "ready": 1
-          },
-          [
-            -1.0,
-            1.0
-          ]
-        ]
+    "status":{
+      "properties": {
+        "value": "available"
       }
-    },
-    "current_state": "ready"
+    }
   }
 }

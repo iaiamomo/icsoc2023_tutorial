@@ -42,6 +42,7 @@ def getObjects(instances, tasks):  #{"Object":["ball","box"]}
         res += t.capability + " - " + "Capability" + "\n"
         capabilities.append(t.capability)
 
+    ''' 
     services = []
     for t in tasks:
         if t.providedBy in services:
@@ -49,6 +50,7 @@ def getObjects(instances, tasks):  #{"Object":["ball","box"]}
         #res += t.providedBy + " - " + "Service" + "\n"
         res += t.providedBy + " - " + t.serviceType + "\n"
         services.append(t.providedBy)
+    '''
         
     res += ")\n"
 
@@ -61,6 +63,8 @@ def getTypes(instances, subtypes_service):
     for k in instances:
         if k == "Object":
             res += k + " - " + "Thing" + "\n"
+            continue
+        elif "Service" in k:
             continue
         else:
             if k in subtype_object:
@@ -116,6 +120,7 @@ def getActions(tasks):
         
         #params = ":parameters (?srv - " + "Service"
         params = ":parameters (?srv - " + t.serviceType
+
         for p in t.params:
             params += " " + "?" + \
                       p.strip().split(" - ")[1] + " - " + \
@@ -146,10 +151,16 @@ def getPredicates(atomicTerms):
         names.append(a.name)
         inp = "?" + a.inp.strip().replace(":", " - ")
         out = "?" + a.out.strip().replace(":", " - ")
+        
+        if "Service" in inp and "Service" != inp:
+            continue
+
         s = "(" + a.name + " " + \
             inp + " " + out + ")" + "\n"
+        
         res += s
         
+    res += "(status ?o - Service ?b - State)"
     res += ")\n"
     return res
 

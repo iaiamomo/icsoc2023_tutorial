@@ -1,33 +1,39 @@
 {
   "id": "rotor_warehouse",
   "attributes": {
-    "type": "service",
-    "transitions": {
-      "ready": {
-        "build_retrieve_rotor": [
-          {
-            "ready": 1
+    "type": "ServiceRotor",
+    "actions": {
+      "building_rotor": {
+        "properties": {
+          "type": "operation",
+          "command": "build_rotor",
+          "cost": 5,
+          "parameters": [
+            "ObjectRotor - o"
+          ],
+          "requirements": {
+            "positive": [
+              "o.built:false",
+              "status:available"
+            ]
           },
-          [-30.0, 1.0]
-        ]
+          "effects": {
+            "added": [
+              "o.built:true"
+            ],
+            "deleted": [
+              "o.built:false"
+            ]
+          }
+        }
       }
-    },
-    "initial_state": "ready",
-    "final_states": [
-      "ready"
-    ]
-    },
+    }
+  },
   "features": {
-    "transition_function": {
-      "ready": {
-        "build_retrieve_rotor": [
-          {
-            "ready": 1
-          },
-          [-30.0, 1.0]
-        ]
+    "status":{
+      "properties": {
+        "value": "available"
       }
-    },
-    "current_state": "ready"
+    }
   }
 }

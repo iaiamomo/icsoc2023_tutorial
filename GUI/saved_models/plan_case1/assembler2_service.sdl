@@ -1,33 +1,45 @@
 {
   "id": "assembler2",
   "attributes": {
-    "type": "service",
-    "transitions": {
-      "ready": {
-        "assemble_motor": [
-          {
-            "ready": 1
+    "type": "ServiceAssembler",
+    "actions": {
+      "assembling_motor": {
+        "properties": {
+          "type": "operation",
+          "command": "assemble_motor",
+          "cost": 6,
+          "parameters": [
+            "ObjectMotor - o",
+            "ObjectInverter - i",
+            "ObjectStator - s",
+            "ObjectRotor - r"
+          ],
+          "requirements": {
+            "positive": [
+              "i.built:true",
+              "s.built:true",
+              "r.built:true",
+              "o.assembled:false",
+              "status:available"
+            ]
           },
-          [-1.0, 2.5]
-        ]
+          "effects": {
+            "added": [
+              "o.assembled:true"
+            ],
+            "deleted": [
+              "o.assembled:false"
+            ]
+          }
+        }
       }
-    },
-    "initial_state": "ready",
-    "final_states": [
-      "ready"
-    ]
-    },
+    }
+  },
   "features": {
-    "transition_function": {
-      "ready": {
-        "assemble_motor": [
-          {
-            "ready": 1
-          },
-          [-1.0, 2.5]
-        ]
+    "status":{
+      "properties": {
+        "value": "available"
       }
-    },
-    "current_state": "ready"
+    }
   }
 }

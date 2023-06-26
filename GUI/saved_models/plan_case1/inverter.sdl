@@ -1,0 +1,13 @@
+{
+    "id": "inverter",
+    "attributes": {
+        "type": "ObjectInverter"
+    },
+    "features": {
+        "built": {
+            "properties": {
+                "value": "false"
+            }
+        }
+    }
+}

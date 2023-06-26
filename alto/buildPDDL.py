@@ -3,26 +3,92 @@ from actorsAPI import *
 import config
 import context
 
-def buildPDDL(phase, domain, problem):
+def buildInstances(services):
+    instances = {}
+
+    for service in services:
+        s_id = service["id"]
+        s_attributes = service["attributes"]
+        s_type = s_attributes["type"]
+
+        if s_type not in instances:
+            instances[s_type] = [s_id]
+        else:
+            instances[s_type].append(s_id)
+
+    instances["Boolean"] = ["true", "false"]
+    instances["State"] = ["available", "broken"]
+
+    return instances
+
+
+def findType(instances, value):
+    for t in instances.keys():
+        if value in instances[t]:
+            return t
+    return None
+
+
+def buildAtomicTerms(services, instances):
+    atomicTerms = []
+
+    for service in services:
+        s_id = service["id"]
+        s_attributes = service["attributes"]
+        s_type = s_attributes["type"]
+        s_features = service["features"]
+
+        for feature in s_features.keys():
+            predicate_name = feature
+            argument_1 = f"o - {s_type}"
+            
+            value = s_features[feature]["properties"]["value"]
+            t = findType(instances, value)
+            assert t is not None
+            argument_2 = f"b - {t}"
+
+            at = atomicTerm(predicate_name, argument_1, argument_2)
+
+            if at not in atomicTerms:
+                atomicTerms.append(at)
+
+    return atomicTerms
+
+
+def buildRequirements():
+    requirements = []
+    requirements.append("strips")
+    requirements.append("equality")
+    requirements.append("typing")
+    return requirements
+
+
+def buildGoal(target):
+    goal = []
+
+    for single_target in target:
+        tokens = single_target.split(",")
+        tokens_stripped = [token.strip() for token in tokens]
+
+        gat = groundAtomicTerm(tokens_stripped[0], tokens_stripped[1], tokens_stripped[2])
+
+        if gat not in goal:
+            goal.append(gat)
+
+    return goal
+
+
+def buildPDDL(domain, problem, target):
     servicesAPI = searchServices()
 
     services = [] 
     capabilities = [] 
     tasks = [] 
     groundAtomicTerms = []
-    
-    if phase == 1:
-        goal = context.goal_phase1
-        atomicTerms = context.atomicTerms_phase1
-        instances = context.instances_phase1
-    elif phase == 2:
-        goal = context.goal_phase2
-        atomicTerms = context.atomicTerms_phase2
-        instances = context.instances_phase2
-    else:
-        goal = context.goal
-        atomicTerms = context.atomicTerms
-        instances = context.instances
+
+    goal = buildGoal(target)
+    instances = buildInstances(servicesAPI)
+    atomicTerms = buildAtomicTerms(servicesAPI, instances)
     requirements = context.requirements
 
     subtypes_service = []
@@ -41,7 +107,7 @@ def buildPDDL(phase, domain, problem):
             groundAtomicTerms.append(groundAtomicTerm(f,s,value))
 
         if "Service" in serviceType:
-            subtypes_service.append(serviceType)       
+            subtypes_service.append(serviceType)
             actions = attributes["actions"]
             for a in actions:
                 action = actions[a]

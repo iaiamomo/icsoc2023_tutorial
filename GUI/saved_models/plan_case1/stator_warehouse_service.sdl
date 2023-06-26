@@ -1,33 +1,39 @@
 {
   "id": "stator_warehouse",
   "attributes": {
-    "type": "service",
-    "transitions": {
-      "ready": {
-        "build_retrieve_stator": [
-          {
-            "ready": 1
+    "type": "ServiceStator",
+    "actions": {
+      "building_stator": {
+        "properties": {
+          "type": "operation",
+          "command": "build_stator",
+          "cost": 4,
+          "parameters": [
+            "ObjectStator - o"
+          ],
+          "requirements": {
+            "positive": [
+              "o.built:false",
+              "status:available"
+            ]
           },
-          [-20.0, 0.5]
-        ]
+          "effects": {
+            "added": [
+              "o.built:true"
+            ],
+            "deleted": [
+              "o.built:false"
+            ]
+          }
+        }
       }
-    },
-    "initial_state": "ready",
-    "final_states": [
-      "ready"
-    ]
-    },
+    }
+  },
   "features": {
-    "transition_function": {
-      "ready": {
-        "build_retrieve_stator": [
-          {
-            "ready": 1
-          },
-          [-20.0, 0.5]
-        ]
+    "status":{
+      "properties": {
+        "value": "available"
       }
-    },
-    "current_state": "ready"
+    }
   }
 }
