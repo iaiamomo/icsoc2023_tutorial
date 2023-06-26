@@ -1,0 +1,101 @@
+{
+  "id": "resist_coating1_service",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
+        "config_resist_coating": [
+          {
+            "configured": 1.0
+          },
+          0
+        ]
+      },
+      "configured": {
+        "checked_resist_coating": [
+          {
+            "executing": 0.95,
+            "broken": 0.05
+          },
+          0
+        ]
+      },
+      "executing": {
+        "resist_coating": [
+          {
+            "ready": 0.95,
+            "broken": 0.05
+          },
+          -1
+        ]
+      },
+      "broken": {
+        "restore_resist_coating": [
+          {
+            "repairing": 1
+          },
+          -10
+        ]
+      },
+      "repairing": {
+        "repaired_resist_coating": [
+          {
+            "ready": 1
+          },
+          0
+        ]
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+  },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "config_resist_coating": [
+          {
+            "configured": 1.0
+          },
+          0
+        ]
+      },
+      "configured": {
+        "checked_resist_coating": [
+          {
+            "executing": 0.95,
+            "broken": 0.05
+          },
+          0
+        ]
+      },
+      "executing": {
+        "resist_coating": [
+          {
+            "ready": 0.95,
+            "broken": 0.05
+          },
+          -1
+        ]
+      },
+      "broken": {
+        "restore_resist_coating": [
+          {
+            "repairing": 1
+          },
+          -10
+        ]
+      },
+      "repairing": {
+        "repaired_resist_coating": [
+          {
+            "ready": 1
+          },
+          0
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
+}

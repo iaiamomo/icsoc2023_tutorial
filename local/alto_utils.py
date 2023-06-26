@@ -2,95 +2,103 @@
 from typing import List
 from pathlib import Path
 
+from alto.buildPDDL import *
+from alto.config import *
+from alto.actorsAPI import *
+
 from IndustrialAPI.actors_api_plan.client_wrapper import ClientWrapper
-from aida.lmdp import compute_composition_lmdp
+
+import subprocess
 
 
 class ALTOUtils:
 
-    def __init__(self, dfa_path, queue):
+    def __init__(self, target):
+        self.target = target
+        self.desc : Description = None
+        self.plan = None
+        self.plan_step = 0
+
+        self.domain = f"{config.PDDL['domainName']}.pddl"
+        self.problem = f"{config.PDDL['problemName']}.pddl"
+
+        self.plan_file = config.PDDL['planFile']
+
         self.client = ClientWrapper("localhost", 8080)
 
-        self.dfa_path = dfa_path
-        self.dfa_target = None
-        self.target_simulator = None
-        #print(self.dfa_target.alphabet.symbols)
-        self.set_targetDFA()
 
-        self.policy : DetPolicy = None
-
-        self.queue = queue
-
-    def set_targetDFA(self):
-        self.dfa_target = target_dfa(Path(self.dfa_path))
-        self.target_simulator = TargetDFA(self.dfa_target)
-
-    async def get_services(self):
-        services: List[ServiceInstance] = await self.client.get_services()
-        services = sorted(services, key=lambda x: x.service_id)
+    async def getServices(self):
+        services = await self.client.get_services()
         return services
-    
-    async def compute_policy(self):
-        services = await self.get_services()
-        lmdp: LMDP = compute_composition_lmdp(self.dfa_target, [service.current_service_spec for service in services], GAMMAS)
-        # set tolerance to stop value iteration earlier for faster convergence
-        result_vf, actions = lexicographic_value_iteration(lmdp, tol=1e-5)
-        self.policy = DetPolicy({s: list(opt_actions_from_s)[0] for s, opt_actions_from_s in actions.items()})
 
-    async def get_current_system_state(self):
-        services = await self.get_services()
-        return [service.current_state for service in services]
+
+    async def set_desc(self):
+        services = await self.getServices()
+        self.desc = buildPDDL(services, self.domain, self.problem, self.target)
+
+
+    async def compute_plan(self):
+        await self.set_desc()
+        command = f"./alto/downward/fast-downward.py {self.domain} {self.problem} --search 'astar(lmcut())'" 
+        result = subprocess.run(command, shell = True, stdout=subprocess.PIPE)
+        print(f"Result planner: {result.returncode}")
+        if result.returncode > 9:
+            return -1
+
+        plan = []
+        with open(config.PDDL['planFile']) as file_in:
+            for line in file_in:
+                tokens = line.replace("(","").replace(")","").strip().split(" ")
+                serviceId = tokens[1]
+                cmd = tokens[0]
+                params = []
+                for i in range(2, len(tokens)):
+                    params.append(tokens[i])
+                body = json.dumps({"command": cmd, "service_id": serviceId, "parameters": params})
+                plan.append(body)
+
+        self.plan = plan
+        self.plan_step = 0
+
     
-    async def get_current_state(self):
-        system_state = await self.get_current_system_state()
-        return (tuple(system_state), self.target_simulator.current_state)
-    
-    async def get_action(self):
-        current_state = await self.get_current_state()
-        print(current_state)
-        target_action, service_index = self.policy.get_action_for_state(current_state)
-        return [target_action, service_index]
-    
-    async def execute_action(self, service_index, target_action):
-        services = await self.get_services()
-        service = services[service_index]
-        service_id = service.service_id
-        old_transition_function = service.transition_function
-        current_state = service.current_state
-        await self.client.execute_service_action(service_id, target_action)
-        updated_service = await self.client.get_service(service_id)
-        new_state = updated_service.current_state
-        new_transition_function = updated_service.transition_function
-        if old_transition_function != new_transition_function:
-            print("transition function diversa")
-            return service_id, current_state, new_state, 0 # return 0 if the lmdp needs to be recomputed
-        else:
-            print("transition function uguale")
-            return service_id, current_state, new_state, 1
-            
-    async def next_step(self):
-        target_action, service_index = await self.get_action()
-        print(target_action)
-        service_id, current_state, new_state, recompute = await self.execute_action(service_index, target_action)
-        self.update_dfa_target(target_action)
-        if recompute == 0:
-            await self.recompute_lmdp()
-        if await self.check_execution_finished():
-            self.set_targetDFA()
-            return service_id, current_state, new_state, target_action, True
-        return service_id, current_state, new_state, target_action, False
+    def get_next_action(self):
+        if self.plan_step >= len(self.plan):
+            return None
         
-    def update_dfa_target(self, target_action):
-        if target_action in self.dfa_target.alphabet:
-            self.target_simulator.update_state(target_action)
+        action = json.load(self.plan[self.plan_step])
+        return action
 
-    def stop_execution(self):
-        if self.target_simulator.current_state in self.dfa_target.accepting_states:
-            return True
-        return False
+
+    async def next_step(self):
+        action = self.get_next_action()
+
+        serviceId = action["service_id"]
+        cmd = action["command"]
+        params = action["parameters"]
+        expected = self.desc.getGroundedEffect(cmd, params)
+
+        response = await self.client.execute_service_action(serviceId, action)
+        event = json.loads(response.content)
+        value = event["value"]
+        output = event["output"]
+        cost = event["cost"]
+
+        if value == "terminated":
+            return 0, action
+        
+        if output != expected:
+            return -1, action
+        
+        return 1, action
+        
     
-    async def recompute_lmdp(self):
-        await self.compute_policy()
+    async def recompute_plan(self):
+        await self.compute_plan()
+
+    
+    async def recompute_initial_plan(self):
+        #TODO reset services
+        await self.compute_plan()
 
 
     async def check_execution_finished(self):
@@ -104,18 +112,7 @@ class ALTOUtils:
                     return True
         return False
     
-
-    async def service_current_status(self, service_id):
-        service = await self.client.get_service(service_id)
-        return service.current_state
     
-    
-    async def break_service(self, service_id):
-        await self.client.break_next_service(service_id)
+    async def break_service(self, serviceId):
+        await self.client.break_service(serviceId)
 
-
-    def change_probabilities(self, n_runs):
-        services : List[ServiceInstance] = self.get_services()
-        for service in services:
-            print()
-            # update probabilities through client

@@ -1,0 +1,35 @@
+{
+  "id": "silicon_russia_service",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
+        "pick_silicon": [
+          {
+            "ready": 1
+          },
+          -12.12
+        ]
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+    },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "pick_silicon": [
+          {
+            "ready": 1
+          },
+          -12.12
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
+}
+
+

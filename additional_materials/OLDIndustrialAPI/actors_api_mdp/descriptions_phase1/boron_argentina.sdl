@@ -1,0 +1,33 @@
+{
+  "id": "boron_argentina_service",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
+        "pick_boron": [
+          {
+            "ready": 1
+          },
+          -8.55
+        ]
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+    },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "pick_boron": [
+          {
+            "ready": 1
+          },
+          -8.55
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
+}

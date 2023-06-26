@@ -31,7 +31,7 @@ class RunTimePage_plan(tk.Frame):
         self.step_y = 0
         self.star_images = []
 
-        self.aida = None
+        self.alto = None
         self.queueInfo = None
 
         tk.Frame.__init__(self, parent)
@@ -119,9 +119,9 @@ class RunTimePage_plan(tk.Frame):
         time.sleep(3)
 
         target = os.path.abspath(f"{folder}/{target_file}")
-        self.aida = ALTOUtils(target)
+        self.alto = ALTOUtils(target)
 
-        asyncio.get_event_loop().run_until_complete(self.aida.compute_policy())
+        asyncio.get_event_loop().run_until_complete(self.alto.compute_plan())
 
         self.startButton.config(state= "disabled")
         self.nextButton.config(state= "normal")
@@ -141,45 +141,56 @@ class RunTimePage_plan(tk.Frame):
         if self.initialRun:
             self.insert_text(f"RUN {self.n_runs}\n")
             self.initialRun = False
-        service, previous_state, new_state, executed_action, finished = await self.aida.next_step()
-        if (previous_state == "executing" or previous_state == "ready") and (new_state == "ready" or new_state == "broken"):
-            self.service_map_action[service][0]+=1
-            self.update_star(service)
-        self.change_rect_color(service, new_state)
-        self.insert_text(f"{service} : {executed_action}\n\t{previous_state} -> {new_state}\n")
-        self.planListBox.see(END)
-        if finished:
+        
+        res, action = await self.alto.next_step()
+        serviceId = action["service_id"]
+        cmd = action["command"]
+        if res == 1:
+            self.service_map_action[serviceId][0]+=1
+            self.update_star(serviceId)
+            self.insert_text(f"{serviceId} : {cmd}\n")
+            self.planListBox.see(END)
+        elif res == 0:
+            self.insert_text(f"{serviceId} : {cmd}\n")
+            self.planListBox.see(END)
             self.n_runs+=1
             msgbox.showinfo(f"Run {self.n_runs-1}", f"Run {self.n_runs-1} finished!\nContinue to re-compute LMDP...")
             self.initialRun = True
-            await self.aida.recompute_lmdp()
+            await self.alto.recompute_initial_plan()
+        elif res == -1:
+            await self.alto.recompute_plan()
+            self.change_rect_color(serviceId, "broken")
     def next(self):
         asyncio.get_event_loop().run_until_complete(self._next())
-
 
     # method used in the immediate run and run methods
     async def _next_finished(self):
         if self.initialRun:
             self.insert_text(f"RUN {self.n_runs}\n")
             self.initialRun = False
-        service, previous_state, new_state, executed_action, finished = await self.aida.next_step()
-        if (previous_state == "executing" or previous_state == "ready") and (new_state == "ready" or new_state == "broken"):
-            self.service_map_action[service][0]+=1
-            self.update_star(service)
-        self.change_rect_color(service, new_state)
-        self.insert_text(f"{service} : {executed_action}\n\t{previous_state} -> {new_state}\n")
-        self.planListBox.see(END)
-        if finished:
-            self.initialRun = True
+        res, action = await self.alto.next_step()
+        serviceId = action["service_id"]
+        cmd = action["command"]
+        if res == 1:
+            self.service_map_action[serviceId][0]+=1
+            self.update_star(serviceId)
+            self.insert_text(f"{serviceId} : {cmd}\n")
+            self.planListBox.see(END)
+            return 0
+        elif res == 0: #finished
+            self.insert_text(f"{serviceId} : {cmd}\n")
+            self.planListBox.see(END)
             self.n_runs+=1
-            self.n_prob_mod+=1
-        return service, previous_state, new_state, executed_action, finished
-
+            return 1
+        elif res == -1:
+            await self.alto.recompute_plan()
+            self.change_rect_color(serviceId, "broken")
+            return 0
 
     def _immediateRun_while(self):
         finished = False
         while not finished:
-            _,_,_,_,finished = asyncio.get_event_loop().run_until_complete(self._next_finished())
+            finished = asyncio.get_event_loop().run_until_complete(self._next_finished())
     def _immediateRun(self):
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
@@ -208,14 +219,15 @@ class RunTimePage_plan(tk.Frame):
         if thread.is_alive():
             self.after(100, lambda: self.monitor(thread))
         else:
-            msgbox.showinfo(f"Run {self.n_runs-1}", f"Run {self.n_runs-1} finished!\nContinute to re-compute LMDP...")
-            self.recomputelmdp()
+            msgbox.showinfo(f"Run {self.n_runs-1}", f"Run {self.n_runs-1} finished!\nContinue to re-compute LMDP...")
+            self.initialRun = True
+            self.recomputeplan()
 
 
-    async def _recomputelmdp(self):
-        await self.aida.recompute_lmdp()
-    def recomputelmdp(self):
-        asyncio.get_event_loop().run_until_complete(self._recomputelmdp())
+    async def _recomputeplan(self):
+        await self.alto.recompute_initial_plan()
+    def recomputeplan(self):
+        asyncio.get_event_loop().run_until_complete(self._recomputeplan())
 
 
     def kill(self):
@@ -236,7 +248,7 @@ class RunTimePage_plan(tk.Frame):
         
         
     async def _breakHandler(self, service_label):
-        await self.aida.break_service(service_label)       
+        await self.alto.break_service(service_label)       
     def breakHandler(self):
         with open(self.config_file) as json_file:
             data = json.load(json_file)

@@ -1,0 +1,33 @@
+{
+  "id": "resist_austria_service",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
+        "pick_resist": [
+          {
+            "ready": 1
+          },
+          -8.38
+        ]
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+    },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "pick_resist": [
+          {
+            "ready": 1
+          },
+          -8.38
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
+}

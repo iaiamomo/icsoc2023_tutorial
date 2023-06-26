@@ -1,0 +1,78 @@
+exactly_once:cleaning
+exactly_once:film_deposition
+exactly_once:resist_coating
+exactly_once:exposure
+exactly_once:development
+exactly_once:etching
+exactly_once:impurities_implantation
+exactly_once:activation
+exactly_once:resist_stripping
+exactly_once:assembly
+exactly_once:testing
+exactly_once:packaging
+alt_precedence:cleaning, film_deposition
+alt_precedence:cleaning, resist_coating
+alt_precedence:cleaning, exposure
+alt_precedence:cleaning, development
+alt_precedence:cleaning, etching
+alt_precedence:cleaning, impurities_implantation
+alt_precedence:cleaning, activation
+alt_precedence:cleaning, resist_stripping
+alt_precedence:cleaning, assembly
+alt_precedence:cleaning, testing
+alt_precedence:cleaning, packaging
+alt_precedence:film_deposition, resist_coating
+alt_precedence:film_deposition, exposure
+alt_precedence:film_deposition, development
+alt_precedence:film_deposition, etching
+alt_precedence:film_deposition, impurities_implantation
+alt_precedence:film_deposition, activation
+alt_precedence:film_deposition, resist_stripping
+alt_precedence:film_deposition, assembly
+alt_precedence:film_deposition, testing
+alt_precedence:film_deposition, packaging
+alt_precedence:resist_coating, exposure
+alt_precedence:resist_coating, development
+alt_precedence:resist_coating, etching
+alt_precedence:resist_coating, impurities_implantation
+alt_precedence:resist_coating, activation
+alt_precedence:resist_coating, resist_stripping
+alt_precedence:resist_coating, assembly
+alt_precedence:resist_coating, testing
+alt_precedence:resist_coating, packaging
+alt_precedence:exposure, development
+alt_precedence:exposure, etching
+alt_precedence:exposure, impurities_implantation
+alt_precedence:exposure, activation
+alt_precedence:exposure, resist_stripping
+alt_precedence:exposure, assembly
+alt_precedence:exposure, testing
+alt_precedence:exposure, packaging
+alt_precedence:development, etching
+alt_precedence:development, impurities_implantation
+alt_precedence:development, activation
+alt_precedence:development, resist_stripping
+alt_precedence:development, assembly
+alt_precedence:development, testing
+alt_precedence:development, packaging
+alt_precedence:etching, impurities_implantation
+alt_precedence:etching, activation
+alt_precedence:etching, resist_stripping
+alt_precedence:etching, assembly
+alt_precedence:etching, testing
+alt_precedence:etching, packaging
+alt_precedence:impurities_implantation, activation
+alt_precedence:impurities_implantation, resist_stripping
+alt_precedence:impurities_implantation, assembly
+alt_precedence:impurities_implantation, testing
+alt_precedence:impurities_implantation, packaging
+alt_precedence:activation, resist_stripping
+alt_precedence:activation, assembly
+alt_precedence:activation, testing
+alt_precedence:activation, packaging
+alt_precedence:resist_stripping, assembly
+alt_precedence:resist_stripping, testing
+alt_precedence:resist_stripping, packaging
+alt_precedence:assembly, testing
+alt_precedence:assembly, packaging
+alt_precedence:testing, packaging

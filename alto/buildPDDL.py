@@ -78,9 +78,7 @@ def buildGoal(target):
     return goal
 
 
-def buildPDDL(domain, problem, target):
-    servicesAPI = searchServices()
-
+def buildPDDL(servicesAPI, domain, problem, target):
     services = [] 
     capabilities = [] 
     tasks = [] 

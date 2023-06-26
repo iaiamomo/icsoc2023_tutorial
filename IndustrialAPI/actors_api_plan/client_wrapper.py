@@ -8,6 +8,7 @@ from IndustrialAPI.actors_api_plan.client import Client
 from IndustrialAPI.actors_api_plan.client.api.services.app_server_api_get_services import asyncio_detailed as get_services
 from IndustrialAPI.actors_api_plan.client.api.services.app_server_api_execute_service_action import asyncio_detailed as execute_service_action
 from IndustrialAPI.actors_api_plan.client.api.services.app_server_api_get_service import asyncio_detailed as get_service
+from IndustrialAPI.actors_api_plan.client.api.services.app_server_api_break_service import asyncio_detailed as break_service
 from IndustrialAPI.actors_api_plan.client.models import Service
 
 from IndustrialAPI.actors_api_plan.actor import Actor
@@ -46,6 +47,10 @@ class ClientWrapper:
     async def execute_service_action(self, service_id: str, action: str) -> None:
         """Execute service action."""
         response = await execute_service_action(service_id, json_body=action, client=self._client)
+        return response.parsed
+    
+    async def break_service(self, service_id: str):
+        response = await break_service(service_id)
         return response.parsed
         
 

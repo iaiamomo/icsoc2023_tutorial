@@ -1,0 +1,33 @@
+{
+  "id": "design_uk_service",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
+        "pick_buy_design": [
+          {
+            "ready": 1
+          },
+          -6.8
+        ]
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+    },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "pick_buy_design": [
+          {
+            "ready": 1
+          },
+          -6.8
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
+}

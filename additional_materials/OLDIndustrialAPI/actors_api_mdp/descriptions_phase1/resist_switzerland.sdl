@@ -1,0 +1,33 @@
+{
+  "id": "resist_switzerland_service",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
+        "pick_resist": [
+          {
+            "ready": 1
+          },
+          -8
+        ]
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+    },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "pick_resist": [
+          {
+            "ready": 1
+          },
+          -8
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
+}

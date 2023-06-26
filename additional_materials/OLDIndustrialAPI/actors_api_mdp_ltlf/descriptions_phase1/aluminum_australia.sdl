@@ -1,0 +1,33 @@
+{
+  "id": "aluminum_australia_service",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "ready": {
+        "pick_aluminum": [
+          {
+            "ready": 1
+          },
+          -14
+        ]
+      }
+    },
+    "initial_state": "ready",
+    "final_states": [
+      "ready"
+    ]
+    },
+  "features": {
+    "transition_function": {
+      "ready": {
+        "pick_aluminum": [
+          {
+            "ready": 1
+          },
+          -14
+        ]
+      }
+    },
+    "current_state": "ready"
+  }
+}

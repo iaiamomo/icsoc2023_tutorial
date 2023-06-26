@@ -1,0 +1,67 @@
+{
+  "id": "exposure1_service",
+  "attributes": {
+    "type": "service",
+    "transitions": {
+      "available": {
+        "exposure": [
+          {
+            "done": 0.95,
+            "broken": 0.05
+          },
+          -1
+        ]
+      },
+      "broken": {
+        "check_exposure": [
+          {
+            "available": 1
+          },
+          -10
+        ]
+      },
+      "done": {
+        "check_exposure": [
+          {
+            "available": 1
+          },
+          0
+        ]
+      }
+    },
+    "initial_state": "available",
+    "final_states": [
+      "available"
+    ]
+  },
+  "features": {
+    "transition_function": {
+      "available": {
+        "exposure": [
+          {
+            "done": 0.95,
+            "broken": 0.05
+          },
+          -1
+        ]
+      },
+      "broken": {
+        "check_exposure": [
+          {
+            "available": 1
+          },
+          -10
+        ]
+      },
+      "done": {
+        "check_exposure": [
+          {
+            "available": 1
+          },
+          0
+        ]
+      }
+    },
+    "current_state": "available"
+  }
+}
