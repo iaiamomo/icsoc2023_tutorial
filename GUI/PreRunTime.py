@@ -29,16 +29,16 @@ class PreRunTimePage(tk.Frame):
         self.backgroundFrame = tk.Frame(self)
         self.backgroundFrame.grid(column= 0, row= 1)
 
-        servicesLabel = ttk.Label (self.backgroundFrame, text = "SERVICES:", font= LARGEFONT)
+        servicesLabel = ttk.Label(self.backgroundFrame, text = "SERVICES:", font= LARGEFONT)
         servicesLabel.grid(row =1, column=0)
 
-        targetsLabel = ttk.Label (self.backgroundFrame, text= "TARGETS:", font= LARGEFONT)
+        targetsLabel = ttk.Label(self.backgroundFrame, text= "TARGETS:", font= LARGEFONT)
         targetsLabel.grid(row = 3, column= 0)
 
         servicesScrollbar = tk.Scrollbar(self.backgroundFrame, width=17)
         servicesScrollbar.grid(row=2, column=1)
 
-        self.servicesListBox = ttk.Treeview(self.backgroundFrame, height=17, columns=("Name", "Validity"), show='headings', yscrollcommand=servicesScrollbar)
+        self.servicesListBox = ttk.Treeview(self.backgroundFrame, height=19, columns=("Name", "Validity"), show='headings', yscrollcommand=servicesScrollbar)
         self.servicesListBox.grid(row = 2, column= 0, pady=10)
 
         servicesScrollbar.config(command = self.servicesListBox.yview)

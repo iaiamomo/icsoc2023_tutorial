@@ -1,0 +1,18 @@
+{
+    "target": ["exactly_once:build_retrieve_stator",
+                "exactly_once:build_retrieve_rotor",
+                "exactly_once:build_retrieve_inverter",
+                "exactly_once:running_in",
+                "exactly_once:assemble_motor",
+                "absence_2:electric_test",
+                "absence_2:painting",
+                "absence_2:static_test",
+                "alt_succession:build_retrieve_stator, assemble_motor",
+                "alt_succession:build_retrieve_rotor, assemble_motor",
+                "alt_succession:build_retrieve_inverter, assemble_motor",
+                "alt_succession:assemble_motor, running_in",
+                "alt_precedence: assemble_motor, painting",
+                "alt_precedence: assemble_motor, electric_test",
+                "alt_precedence:assemble_motor, static_test",
+                "not_coexistence:electric_test, static_test"]
+}

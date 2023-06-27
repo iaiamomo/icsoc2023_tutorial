@@ -65,7 +65,6 @@ class ALTOUtils:
             return None
         
         action = self.plan[self.plan_step]
-        self.plan_step+=1
         return action
 
 
@@ -94,6 +93,7 @@ class ALTOUtils:
             print("OUTPUT != EXPECTED")
             return -1, json_action
         
+        self.plan_step+=1
         return 1, json_action
 
 
@@ -120,3 +120,7 @@ class ALTOUtils:
     
     def reset_alto(self):
         self.plan_step = 0
+
+    async def recompute_plan(self):
+        await self.compute_plan()
+        

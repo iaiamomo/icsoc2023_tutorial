@@ -13,9 +13,14 @@ async def make_http_request(url):
 
 async def make_post_http_request(url, data):
     async with aiohttp.ClientSession() as session:
-        async with session.post(url, data=data) as response:
-            response_text = await response.text()
-            return response_text
+        if data != None:
+            async with session.post(url, data=data) as response:
+                response_text = await response.text()
+                return response_text
+        else:
+            async with session.post(url) as response:
+                response_text = await response.text()
+                return response_text
 
 
 async def getService(serviceId):
@@ -41,5 +46,5 @@ async def sendMessage(serviceId, body):
 
 async def breakService(serviceId):
     serviceId = urllib.parse.quote(serviceId, safe='')
-    res = await make_post_http_request(f'http://localhost:8080/break_service/{serviceId}')
+    res = await make_post_http_request(f'http://localhost:8080/break-service/{serviceId}', None)
     return json.loads(res)

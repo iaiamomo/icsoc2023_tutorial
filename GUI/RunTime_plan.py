@@ -227,11 +227,6 @@ class RunTimePage_plan(tk.Frame):
             self.resetServices()
 
 
-    async def _recomputeplan(self):
-        await self.alto.recompute_initial_plan()
-    def recomputeplan(self):
-        asyncio.get_event_loop().run_until_complete(self._recomputeplan())
-
     def resetServices(self):
         os.killpg(os.getpgid(self.p1.pid), signal.SIGTERM)
 

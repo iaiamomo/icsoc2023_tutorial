@@ -1,18 +1,18 @@
 {
-  "id": "stator",
+  "id": "rotor2",
   "attributes": {
     "type": "service",
     "transitions": {
       "ready": {
-        "config_stator_builder": [
+        "config_rotor_builder": [
           {
             "configured": 1.0
           },
-          [-2.0, 0.0]
+          [-3.0, 0.0]
         ]
       },
       "configured": {
-        "checked_stator_builder": [
+        "checked_rotor_builder": [
           {
             "executing": 0.95,
             "broken": 0.05
@@ -21,28 +21,28 @@
           ]
       },
       "executing": {
-        "build_retrieve_stator": [
+        "build_retrieve_rotor": [
           {
             "ready": 0.95,
             "broken": 0.05
           },
-          [-1.0, 1.0]
+          [-1.0, 10.0]
         ]
       },
       "broken": {
-        "restore_stator_builder": [
+        "restore_rotor_builder": [
           {
             "repairing": 1
           },
-          [-1.0, 0.0]
+          [-10.0, -1.0]
         ]
       },
       "repairing": {
-        "repaired_stator_builder": [
+        "repaired_rotor_builder": [
           {
             "ready": 1
           },
-          [-3.0, 0.0]
+          [-1.0, 0.0]
         ]
       }
     },
@@ -54,15 +54,15 @@
   "features": {
     "transition_function": {
       "ready": {
-        "config_stator_builder": [
+        "config_rotor_builder": [
           {
             "configured": 1.0
           },
-          [-2.0, 0.0]
+          [-3.0, 0.0]
         ]
       },
       "configured": {
-        "checked_stator_builder": [
+        "checked_rotor_builder": [
           {
             "executing": 0.95,
             "broken": 0.05
@@ -71,28 +71,28 @@
         ]
       },
       "executing": {
-        "build_retrieve_stator": [
+        "build_retrieve_rotor": [
           {
             "ready": 0.95,
             "broken": 0.05
           },
-          [-1.0, 1.0]
+          [-1.0, 10]
         ]
       },
       "broken": {
-        "restore_stator_builder": [
+        "restore_rotor_builder": [
           {
             "repairing": 1
           },
-          [-1.0, 0.0]
+          [-10.0, -1.0]
         ]
       },
       "repairing": {
-        "repaired_stator_builder": [
+        "repaired_rotor_builder": [
           {
             "ready": 1
           },
-          [-3.0, 0.0]
+          [-1.0, 0.0]
         ]
       }
     },
