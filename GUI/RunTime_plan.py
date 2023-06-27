@@ -162,7 +162,7 @@ class RunTimePage_plan(tk.Frame):
             self.n_runs+=1
             msgbox.showinfo(f"Run {self.n_runs-1}", f"Run {self.n_runs-1} finished!\nContinue to re-compute the plan...")
             self.initialRun = True
-            await self.alto.recompute_initial_plan()
+            self.resetServices()
     def next(self):
         asyncio.get_event_loop().run_until_complete(self._next())
 
@@ -206,7 +206,7 @@ class RunTimePage_plan(tk.Frame):
     def _run_while(self):
         finished = False
         while not finished:
-            _,_,_,_,finished = asyncio.get_event_loop().run_until_complete(self._next_finished())
+            finished = asyncio.get_event_loop().run_until_complete(self._next_finished())
             time.sleep(1)
     def _run(self):
         loop = asyncio.new_event_loop()
@@ -224,13 +224,43 @@ class RunTimePage_plan(tk.Frame):
         else:
             msgbox.showinfo(f"Run {self.n_runs-1}", f"Run {self.n_runs-1} finished!\nContinue to re-compute plan...")
             self.initialRun = True
-            self.recomputeplan()
+            self.resetServices()
 
 
     async def _recomputeplan(self):
         await self.alto.recompute_initial_plan()
     def recomputeplan(self):
         asyncio.get_event_loop().run_until_complete(self._recomputeplan())
+
+    def resetServices(self):
+        os.killpg(os.getpgid(self.p1.pid), signal.SIGTERM)
+
+        config_json = json.load(open(self.config_file))
+        folder = config_json['folder']
+        mode = config_json['mode']
+        target_file = config_json['target_file']
+
+        app_path = f"../IndustrialAPI/actors_api_{mode}/app.py"
+        self.p1 = subprocess.Popen([f"xterm -e python {app_path}"], shell=True, preexec_fn=os.setsid)
+
+        time.sleep(1)
+
+        launch_devices_path = "../IndustrialAPI/launch_devices.py"
+        self.p2 = subprocess.Popen([f"xterm -e python {launch_devices_path} {folder} {mode}"], shell=True)
+
+        time.sleep(2)
+
+        target = os.path.abspath(f"{folder}/{target_file}")
+        self.alto = ALTOUtils(target)
+
+        asyncio.get_event_loop().run_until_complete(self.alto.compute_plan())
+
+        self.startButton.config(state= "disabled")
+        self.nextButton.config(state= "normal")
+        self.killButton.config(state= "normal")
+        self.immediateRunButton.config(state= "normal")
+        self.runButton.config(state= "normal")
+        self.disruptionButton.config(state= "normal")
 
 
     def kill(self):

@@ -95,15 +95,6 @@ class ALTOUtils:
             return -1, json_action
         
         return 1, json_action
-        
-    
-    async def recompute_plan(self):
-        await self.compute_plan()
-
-    
-    async def recompute_initial_plan(self):
-        #TODO reset services
-        await self.compute_plan()
 
 
     async def check_execution_finished(self):
@@ -124,5 +115,8 @@ class ALTOUtils:
 
     def check_terminated_plan(self):
         if self.plan_step >= len(self.plan):
-            return 0
-        return 1
+            return 1
+        return 0
+    
+    def reset_alto(self):
+        self.plan_step = 0
