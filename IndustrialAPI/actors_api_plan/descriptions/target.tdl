@@ -1,0 +1,7 @@
+{
+    "target": ["run_in, motor, true",
+                "el_test, motor, true",
+                "st_test, motor, true",
+                "painted, motor, true"
+            ]
+}

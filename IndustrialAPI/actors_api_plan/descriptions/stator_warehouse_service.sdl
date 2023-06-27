@@ -1,0 +1,39 @@
+{
+  "id": "stator_warehouse",
+  "attributes": {
+    "type": "ServiceStator",
+    "actions": {
+      "building_stator": {
+        "properties": {
+          "type": "operation",
+          "command": "build_stator",
+          "cost": 4,
+          "parameters": [
+            "ObjectStator - o"
+          ],
+          "requirements": {
+            "positive": [
+              "o.built:false",
+              "status:available"
+            ]
+          },
+          "effects": {
+            "added": [
+              "o.built:true"
+            ],
+            "deleted": [
+              "o.built:false"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "features": {
+    "status":{
+      "properties": {
+        "value": "available"
+      }
+    }
+  }
+}

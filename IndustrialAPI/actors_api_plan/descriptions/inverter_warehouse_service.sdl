@@ -1,0 +1,39 @@
+{
+  "id": "inverter_warehouse",
+  "attributes": {
+    "type": "ServiceInverter",
+    "actions": {
+      "building_inverter": {
+        "properties": {
+          "type": "operation",
+          "command": "build_inverter",
+          "cost": 5,
+          "parameters": [
+            "ObjectInverter - o"
+          ],
+          "requirements": {
+            "positive": [
+              "o.built:false",
+              "status:available"
+            ]
+          },
+          "effects": {
+            "added": [
+              "o.built:true"
+            ],
+            "deleted": [
+              "o.built:false"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "features": {
+    "status":{
+      "properties": {
+        "value": "available"
+      }
+    }
+  }
+}

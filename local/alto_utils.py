@@ -6,8 +6,6 @@ from alto.buildPDDL import *
 from alto.config import *
 from alto.actorsAPI import *
 
-from IndustrialAPI.actors_api_plan.client_wrapper import ClientWrapper
-
 import subprocess
 
 
@@ -19,16 +17,14 @@ class ALTOUtils:
         self.plan = None
         self.plan_step = 0
 
-        self.domain = f"{config.PDDL['domainName']}.pddl"
-        self.problem = f"{config.PDDL['problemName']}.pddl"
+        self.domain = f"{PDDL['domainName']}.pddl"
+        self.problem = f"{PDDL['problemName']}.pddl"
 
-        self.plan_file = config.PDDL['planFile']
-
-        self.client = ClientWrapper("localhost", 8080)
+        self.plan_file = PDDL['planFile']
 
 
     async def getServices(self):
-        services = await self.client.get_services()
+        services = await searchServices()
         return services
 
 
@@ -39,15 +35,17 @@ class ALTOUtils:
 
     async def compute_plan(self):
         await self.set_desc()
-        command = f"./alto/downward/fast-downward.py {self.domain} {self.problem} --search 'astar(lmcut())'" 
+        command = f"../alto/downward/fast-downward.py {self.domain} {self.problem} --search 'astar(lmcut())'" 
         result = subprocess.run(command, shell = True, stdout=subprocess.PIPE)
         print(f"Result planner: {result.returncode}")
         if result.returncode > 9:
             return -1
 
         plan = []
-        with open(config.PDDL['planFile']) as file_in:
+        with open(f"{PDDL['planFile']}") as file_in:
             for line in file_in:
+                if ';' in line:
+                    continue
                 tokens = line.replace("(","").replace(")","").strip().split(" ")
                 serviceId = tokens[1]
                 cmd = tokens[0]
@@ -59,37 +57,47 @@ class ALTOUtils:
 
         self.plan = plan
         self.plan_step = 0
+        return 1
 
     
     def get_next_action(self):
         if self.plan_step >= len(self.plan):
             return None
         
-        action = json.load(self.plan[self.plan_step])
+        action = self.plan[self.plan_step]
         return action
 
 
     async def next_step(self):
         action = self.get_next_action()
+        print(action)
 
-        serviceId = action["service_id"]
-        cmd = action["command"]
-        params = action["parameters"]
+        print(type(action))
+
+        json_action = json.loads(action)
+
+        serviceId = json_action["service_id"]
+        cmd = json_action["command"]
+        params = json_action["parameters"]
         expected = self.desc.getGroundedEffect(cmd, params)
 
-        response = await self.client.execute_service_action(serviceId, action)
-        event = json.loads(response.content)
+        print(serviceId)
+        print(json_action)
+
+        response = await sendMessage(serviceId, json_action)
+        event = response
+        print(event)
         value = event["value"]
         output = event["output"]
         cost = event["cost"]
 
         if value == "terminated":
-            return 0, action
+            return 0, json_action
         
         if output != expected:
-            return -1, action
+            return -1, json_action
         
-        return 1, action
+        return 1, json_action
         
     
     async def recompute_plan(self):
@@ -114,5 +122,5 @@ class ALTOUtils:
     
     
     async def break_service(self, serviceId):
-        await self.client.break_service(serviceId)
+        await breakService(serviceId)
 

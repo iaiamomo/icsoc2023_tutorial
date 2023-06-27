@@ -26,7 +26,7 @@ class tkinterApp(tk.Tk):
         # creating a container
         self.geometry("1920x1080")
         container = tk.Frame(self)
-        self.title("Adaptive Software")
+        self.title("AIDA")
         self.grid_rowconfigure(0, weight=1)
         self.grid_columnconfigure(0, weight=1)
         
@@ -148,7 +148,7 @@ class StartPage(tk.Frame):
         style.configure('CustomButton.TButton', font=MEDIUMFONT)
     
         # label of frame
-        label = ttk.Label(self, text ="Adaptive Industry 4.0", font = LARGEFONT)
+        label = ttk.Label(self, text ="AIDA", font = LARGEFONT)
         label.grid(row = 0, column =0, padx = 10, pady = 10)
   
         # button planning

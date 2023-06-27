@@ -1,7 +1,6 @@
-from description import *
-from actorsAPI import *
-import config
-import context
+from alto.description import *
+from alto.actorsAPI import *
+import alto.context
 
 def buildInstances(services):
     instances = {}
@@ -79,6 +78,9 @@ def buildGoal(target):
 
 
 def buildPDDL(servicesAPI, domain, problem, target):
+    config_json = json.load(open(target))
+    target = config_json['target']
+
     services = [] 
     capabilities = [] 
     tasks = [] 

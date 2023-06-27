@@ -2,10 +2,12 @@ import asyncio
 import json
 import config
 import subprocess
-from buildPDDL import *
-from config import *
+from alto.buildPDDL import *
+from alto.config import *
 import requests
-from actorsAPI import *
+from alto.actorsAPI import *
+from IndustrialAPI.actors_api_plan.client_wrapper import ClientWrapper
+from alto.actorsAPI import *
 
 import cProfile
 import pstats
@@ -16,6 +18,15 @@ rnd = 0
 total_cost = 0
 
 
+async def main():
+    res = await searchServices()
+    print(res)
+
+asyncio.run(main())
+
+
+
+''' 
 async def executionEngine(rnd, tot_cost):
     domain = f"{config.PDDL['domainName']}.pddl"
     problem = f"{config.PDDL['problemName']}.pddl"
@@ -98,5 +109,5 @@ if result == 0:
     print("Success!")
     print("Total cost: " + str(total_cost))
 else:
-    print("Plan not found!")
-                
+    print("Plan not found!")             
+'''

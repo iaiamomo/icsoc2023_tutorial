@@ -1,0 +1,45 @@
+{
+  "id": "assembler2",
+  "attributes": {
+    "type": "ServiceAssembler",
+    "actions": {
+      "assembling_motor": {
+        "properties": {
+          "type": "operation",
+          "command": "assemble_motor",
+          "cost": 6,
+          "parameters": [
+            "ObjectMotor - o",
+            "ObjectInverter - i",
+            "ObjectStator - s",
+            "ObjectRotor - r"
+          ],
+          "requirements": {
+            "positive": [
+              "i.built:true",
+              "s.built:true",
+              "r.built:true",
+              "o.assembled:false",
+              "status:available"
+            ]
+          },
+          "effects": {
+            "added": [
+              "o.assembled:true"
+            ],
+            "deleted": [
+              "o.assembled:false"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "features": {
+    "status":{
+      "properties": {
+        "value": "available"
+      }
+    }
+  }
+}

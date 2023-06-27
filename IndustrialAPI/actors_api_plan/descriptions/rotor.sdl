@@ -1,0 +1,13 @@
+{
+    "id": "rotor",
+    "attributes": {
+        "type": "ObjectRotor"
+    },
+    "features": {
+        "built": {
+            "properties": {
+                "value": "false"
+            }
+        }
+    }
+}

@@ -1,4 +1,4 @@
-import context
+import alto.context as context
 
 def getInit(groundAtomicTerms, tasks):
     res = "(:init \n"

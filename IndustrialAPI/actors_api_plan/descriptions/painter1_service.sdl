@@ -1,0 +1,40 @@
+{
+  "id": "painter1",
+  "attributes": {
+    "type": "ServicePainter",
+    "actions": {
+      "painting_motor": {
+        "properties": {
+          "type": "operation",
+          "command": "paint_motor",
+          "cost": 3,
+          "parameters": [
+            "ObjectMotor - o"
+          ],
+          "requirements": {
+            "positive": [
+              "o.assembled:true",
+              "o.run_in:false",
+              "status:available"
+            ]
+          },
+          "effects": {
+            "added": [
+              "o.run_in:true"
+            ],
+            "deleted": [
+              "o.run_in:false"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "features": {
+    "status":{
+      "properties": {
+        "value": "available"
+      }
+    }
+  }
+}

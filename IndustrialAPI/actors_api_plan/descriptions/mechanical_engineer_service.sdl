@@ -1,0 +1,65 @@
+{
+  "id": "mechanical_engineer",
+  "attributes": {
+    "type": "ServiceEngineer",
+    "actions": {
+      "el_testing_motor": {
+        "properties": {
+          "type": "operation",
+          "command": "el_test_motor",
+          "cost": 2,
+          "parameters": [
+            "ObjectMotor - o"
+          ],
+          "requirements": {
+            "positive": [
+              "o.assembled:true",
+              "o.el_test:false",
+              "status:available"
+            ]
+          },
+          "effects": {
+            "added": [
+              "o.el_test:true"
+            ],
+            "deleted": [
+              "o.el_test:false"
+            ]
+          }
+        }
+      },
+      "st_testing_motor": {
+        "properties": {
+          "type": "operation",
+          "command": "st_test_motor",
+          "cost": 1,
+          "parameters": [
+            "ObjectMotor - o"
+          ],
+          "requirements": {
+            "positive": [
+              "o.assembled:true",
+              "o.st_test:false",
+              "status:available"
+            ]
+          },
+          "effects": {
+            "added": [
+              "o.st_test:true"
+            ],
+            "deleted": [
+              "o.st_test:false"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "features": {
+    "status":{
+      "properties": {
+        "value": "available"
+      }
+    }
+  }
+}

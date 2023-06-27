@@ -1,0 +1,13 @@
+{
+    "id": "stator",
+    "attributes": {
+        "type": "ObjectStator"
+    },
+    "features": {
+        "built": {
+            "properties": {
+                "value": "false"
+            }
+        }
+    }
+}

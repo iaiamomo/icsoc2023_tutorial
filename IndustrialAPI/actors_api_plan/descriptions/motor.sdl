@@ -1,0 +1,33 @@
+{
+    "id": "motor",
+    "attributes": {
+        "type": "ObjectMotor"
+    },
+    "features": {
+        "assembled": {
+            "properties": {
+                "value": "false"
+            }
+        },
+        "run_in": {
+            "properties": {
+                "value": "false"
+            }
+        },
+        "st_test": {
+            "properties": {
+                "value": "false"
+            }
+        },
+        "el_test": {
+            "properties": {
+                "value": "false"
+            }
+        },
+        "painted": {
+            "properties": {
+                "value": "true"
+            }
+        }
+    }
+}

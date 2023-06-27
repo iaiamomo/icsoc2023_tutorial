@@ -1,4 +1,4 @@
-from translator import *
+from alto.translator import *
 
 instances_phase1 = {"Design":["design"],
                     "BoronMaterial":["boron"],

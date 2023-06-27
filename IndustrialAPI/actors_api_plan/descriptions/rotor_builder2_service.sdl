@@ -1,0 +1,39 @@
+{
+  "id": "rotor2",
+  "attributes": {
+    "type": "ServiceRotor",
+    "actions": {
+      "building_rotor": {
+        "properties": {
+          "type": "operation",
+          "command": "build_rotor",
+          "cost": 1,
+          "parameters": [
+            "ObjectRotor - o"
+          ],
+          "requirements": {
+            "positive": [
+              "o.built:false",
+              "status:available"
+            ]
+          },
+          "effects": {
+            "added": [
+              "o.built:true"
+            ],
+            "deleted": [
+              "o.built:false"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "features": {
+    "status":{
+      "properties": {
+        "value": "available"
+      }
+    }
+  }
+}
