@@ -65,14 +65,12 @@ class ALTOUtils:
             return None
         
         action = self.plan[self.plan_step]
+        self.plan_step+=1
         return action
 
 
     async def next_step(self):
         action = self.get_next_action()
-        print(action)
-
-        print(type(action))
 
         json_action = json.loads(action)
 
@@ -81,20 +79,19 @@ class ALTOUtils:
         params = json_action["parameters"]
         expected = self.desc.getGroundedEffect(cmd, params)
 
-        print(serviceId)
         print(json_action)
+        print(f"expected {expected}")
 
         response = await sendMessage(serviceId, json_action)
         event = response
-        print(event)
+        print(f"response {event}")
         value = event["value"]
         output = event["output"]
         cost = event["cost"]
-
-        if value == "terminated":
-            return 0, json_action
+        print(f"output {output}")
         
         if output != expected:
+            print("OUTPUT != EXPECTED")
             return -1, json_action
         
         return 1, json_action
@@ -124,3 +121,8 @@ class ALTOUtils:
     async def break_service(self, serviceId):
         await breakService(serviceId)
 
+
+    def check_terminated_plan(self):
+        if self.plan_step >= len(self.plan):
+            return 0
+        return 1

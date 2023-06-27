@@ -19,13 +19,13 @@
 			"name_file": "stator_builder_service.sdl",
 			"x": 0,
 			"y": 2,
-			"label": "stator"
+			"label": "stator_builder"
 		},
 		{
 			"name_file": "rotor_builder2_service.sdl",
 			"x": 1,
 			"y": 2,
-			"label": "rotor2"
+			"label": "rotor_builder2"
 		},
 		{
 			"name_file": "rotor_warehouse_service.sdl",
@@ -79,7 +79,7 @@
 			"name_file": "rotor_builder1_service.sdl",
 			"x": 0,
 			"y": 4,
-			"label": "rotor1"
+			"label": "rotor_builder1"
 		},
 		{
 			"name_file": "painter2_service.sdl",

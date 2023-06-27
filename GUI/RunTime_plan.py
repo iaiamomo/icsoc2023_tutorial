@@ -146,20 +146,23 @@ class RunTimePage_plan(tk.Frame):
         serviceId = action["service_id"]
         cmd = action["command"]
         if res == 1:
+            print("RES = 1")
             self.service_map_action[serviceId][0]+=1
             self.update_star(serviceId)
             self.insert_text(f"{serviceId} : {cmd}\n")
             self.planListBox.see(END)
-        elif res == 0:
-            self.insert_text(f"{serviceId} : {cmd}\n")
-            self.planListBox.see(END)
-            self.n_runs+=1
-            msgbox.showinfo(f"Run {self.n_runs-1}", f"Run {self.n_runs-1} finished!\nContinue to re-compute LMDP...")
-            self.initialRun = True
-            await self.alto.recompute_initial_plan()
         elif res == -1:
+            print("RES = -1")
             await self.alto.recompute_plan()
             self.change_rect_color(serviceId, "broken")
+
+        finished = self.alto.check_terminated_plan()
+        if finished:
+            print("FINISHED")
+            self.n_runs+=1
+            msgbox.showinfo(f"Run {self.n_runs-1}", f"Run {self.n_runs-1} finished!\nContinue to re-compute the plan...")
+            self.initialRun = True
+            await self.alto.recompute_initial_plan()
     def next(self):
         asyncio.get_event_loop().run_until_complete(self._next())
 
@@ -176,16 +179,16 @@ class RunTimePage_plan(tk.Frame):
             self.update_star(serviceId)
             self.insert_text(f"{serviceId} : {cmd}\n")
             self.planListBox.see(END)
-            return 0
-        elif res == 0: #finished
-            self.insert_text(f"{serviceId} : {cmd}\n")
-            self.planListBox.see(END)
-            self.n_runs+=1
-            return 1
         elif res == -1:
             await self.alto.recompute_plan()
             self.change_rect_color(serviceId, "broken")
-            return 0
+        
+        finished = self.alto.check_terminated_plan()
+        if finished:
+            print("FINISHED")
+            self.n_runs+=1
+            return 1
+        return 0
 
     def _immediateRun_while(self):
         finished = False
@@ -219,7 +222,7 @@ class RunTimePage_plan(tk.Frame):
         if thread.is_alive():
             self.after(100, lambda: self.monitor(thread))
         else:
-            msgbox.showinfo(f"Run {self.n_runs-1}", f"Run {self.n_runs-1} finished!\nContinue to re-compute LMDP...")
+            msgbox.showinfo(f"Run {self.n_runs-1}", f"Run {self.n_runs-1} finished!\nContinue to re-compute plan...")
             self.initialRun = True
             self.recomputeplan()
 

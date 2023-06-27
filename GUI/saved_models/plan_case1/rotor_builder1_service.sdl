@@ -1,5 +1,5 @@
 {
-  "id": "rotor1",
+  "id": "rotor_builder1",
   "attributes": {
     "type": "ServiceRotor",
     "actions": {
