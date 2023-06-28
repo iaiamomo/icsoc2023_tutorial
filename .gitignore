@@ -4,17 +4,18 @@ __pycache__
 
 downward
 IndustrialAPI/actors_api_plan/client
-IndustrialAPI/actors_api_mdp/client
-IndustrialAPI/actors_api_mdp_ltlf/client
+IndustrialAPI/actors_api_lmdp_ltlf/client
 
 *.pddl
 profiling*.txt
 sas_plan
 
+sas_plan
+mdp
+mdp_ltlf
+OLDIndustrialAPI
+
 docs/local_tests
-local/IndustrialAPI/actors_api_mdp_ltlf/client
-local/IndustrialAPI/actors_api_mdp/client
-local/IndustrialAPI/actors_api_plan/client
 
 .bash_history
 

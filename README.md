@@ -1,6 +1,6 @@
 <div align="center">    
 
-# Services in Industry 4.0. Modeling and composition @ SummerSOC 2023
+# Services in Industry 4.0. Modeling and composition @ SummerSOC 2023<br>AIDA
 
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black)
 ![Python](https://img.shields.io/badge/python-3670A0?style=flat&logo=python&logoColor=ffdd54)
@@ -15,12 +15,22 @@ The proposed technique generates a plan for a manufacturing process by orchestra
 
 ## Architecture
 <div align="center">    
-<img width="80%" src="images/architecture_tutta.png">
+<img width="80%" src="images/arch.png">
 </div>
 
-- **Controller**: computing the plan
+- **Design GUI**: graphic tool to model manufacturing actors and goal
+- **Controller**: composing the manufacturing actors
 - **Enactor**: acting as a middleware between controller and Industrial API
-- **Industrial API** platform: realizing the services representing the manufacturing actors
+- **Industrial API**: realizing the services wrapping the manufacturing actors
+
+### IndustrialAPI
+<div align="center">    
+<img width="60%" src="images/ind_api.png">
+</div>
+
+- The controller interact with the Industrial API through REST API to retrieve service specification and current status and request the execution of an action by a service.
+- The services are connected to the server via websocket
+- Services connect to the server to register and execute actions
 
 
 ## Preliminaries
@@ -47,6 +57,16 @@ pip install -e .
 
 - Install [Lydia](https://github.com/whitemech/lydia). 
   We suggest to install it by [building it from source](https://github.com/whitemech/lydia#build-from-source).
+
+- Install [xterm](https://invisible-island.net/xterm/).
+```bash
+sudo apt install xterm
+```
+
+- Install Python GUI Tkinter module:
+```bash
+sudo apt install python3-tk
+```
 
 - Install [Fast Downward](https://github.com/aibasel/downward) planner:
 ```bash
@@ -75,6 +95,10 @@ python Adaptive.py
 ```
 
 ### Design time
+<div align="center">    
+<img width="80%" src="images/design.png">
+</div>
+
 A design time frame allows to model both services (.sdl) and manufacturing goal (.tdl). Such models are usually saved in specific folders inside [saved_models](GUI/saved_models/).
 
 ### Run time
@@ -84,6 +108,25 @@ A design time frame allows to model both services (.sdl) and manufacturing goal 
 
 A run time frame allows to generate and execute the optimal policy (plan). The set-up of this phase depends on the selection of a proper configuration file. [config_files](GUI/config_files/) contains some configuration files.
 
+
+
+## Cite the tutorial
+```bibtex
+@misc{leotta2023services,
+  title={{Service in Industry 4.0 modeling and composition}},
+  author={Leotta, Francesco and 
+    Mecella, Massimo and 
+    Monti, Flavia and 
+    Silo, Luciana},
+  booktitle={Service-Oriented Computing 17th Symposium and Summer School, SummerSOC 2023, Hersonissos, Crete, Greece, June 26–July 1, 2023 - Tutorial Program},
+  year={2023}
+}
+```
+
+## Who are we?
+We are part of the Processes, Services and Software Engineering group of DIAG (Sapienza Università di Roma).
+
+The research team behind this work includes [Francesco Leotta](http://www.diag.uniroma1.it/leotta/), [Massimo Mecella](http://www.diag.uniroma1.it/users/massimo_mecella), [Flavia Monti](https://www.diag.uniroma1.it/users/flavia_monti) and [Luciana Silo](https://www.diag.uniroma1.it/users/luciana_silo).
 
 ## License
 The software is released under the MIT license.
