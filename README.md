@@ -118,7 +118,8 @@ A run time frame allows to generate and execute the optimal policy (plan). The s
     Mecella, Massimo and 
     Monti, Flavia and 
     Silo, Luciana},
-  booktitle={Service-Oriented Computing 17th Symposium and Summer School, SummerSOC 2023, Hersonissos, Crete, Greece, June 26–July 1, 2023 - Tutorial Program},
+  booktitle={Service-Oriented Computing 17th Symposium and Summer School,
+    SummerSOC 2023, Hersonissos, Crete, Greece, June 26–July 1, 2023 - Tutorial Program},
   year={2023}
 }
 ```
