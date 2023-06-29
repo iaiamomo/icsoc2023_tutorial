@@ -1,6 +1,6 @@
 <div align="center">    
 
-# Services in Industry 4.0. Modeling and composition @ SummerSOC 2023<br>AIDA
+# Services in Industry 4.0. Modeling and composition<br>SummerSOC 2023<br>AIDA tool
 
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black)
 ![Python](https://img.shields.io/badge/python-3670A0?style=flat&logo=python&logoColor=ffdd54)
@@ -121,6 +121,22 @@ A run time frame allows to generate and execute the optimal policy (plan). The s
   booktitle={Service-Oriented Computing 17th Symposium and Summer School,
     SummerSOC 2023, Hersonissos, Crete, Greece, June 26–July 1, 2023 - Tutorial Program},
   year={2023}
+}
+```
+
+
+## Cite the article
+```bibtex
+@inproceedings{monti2023services,
+  title={{Services in smart manufacturing: comparing automated reasoning techniques for composition and orchestration}},
+  author={Monti, Flavia and 
+    Silo, Luciana and
+    Leotta, Francesco and 
+    Mecella, Massimo},
+  booktitle={Service-Oriented Computing: 17th Symposium and Summer School,
+    SummerSOC 2023, Hersonissos, Crete, Greece, June 26–July 1, 2023},
+  year={2023},
+  organization={Springer}
 }
 ```
 
