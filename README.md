@@ -1,6 +1,6 @@
 <div align="center">    
 
-# Services in Industry 4.0. Modeling and composition<br>SummerSOC 2023<br>AIDA tool
+# Services in Industry 4.0. Modeling and Composition for Agile Supply Chains<br>ICSOC 2023<br>AIDA tool
 
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black)
 ![Python](https://img.shields.io/badge/python-3670A0?style=flat&logo=python&logoColor=ffdd54)
@@ -113,37 +113,21 @@ A run time frame allows to generate and execute the optimal policy (plan). The s
 ## Cite the tutorial
 ```bibtex
 @misc{leotta2023services,
-  title={{Service in Industry 4.0 modeling and composition}},
+  title={{Services in Industry 4.0. Modeling and composition for Agile Supply Chains}},
   author={Leotta, Francesco and 
-    Mecella, Massimo and 
     Monti, Flavia and 
     Silo, Luciana},
-  booktitle={Service-Oriented Computing 17th Symposium and Summer School,
-    SummerSOC 2023, Hersonissos, Crete, Greece, June 26–July 1, 2023 - Tutorial Program},
+  booktitle={International Conference on Service-Oriented Computing,
+    ICSOC 2023, Rome, Italy, November 28–December 1, 2023 - Tutorial Program},
   year={2023}
 }
 ```
 
 
-## Cite the article
-```bibtex
-@inproceedings{monti2023services,
-  title={{Services in smart manufacturing: comparing automated reasoning techniques for composition and orchestration}},
-  author={Monti, Flavia and 
-    Silo, Luciana and
-    Leotta, Francesco and 
-    Mecella, Massimo},
-  booktitle={Service-Oriented Computing: 17th Symposium and Summer School,
-    SummerSOC 2023, Hersonissos, Crete, Greece, June 26–July 1, 2023},
-  year={2023},
-  organization={Springer}
-}
-```
-
 ## Who are we?
 We are part of the Processes, Services and Software Engineering group of DIAG (Sapienza Università di Roma).
 
-The research team behind this work includes [Francesco Leotta](http://www.diag.uniroma1.it/leotta/), [Massimo Mecella](http://www.diag.uniroma1.it/users/massimo_mecella), [Flavia Monti](https://www.diag.uniroma1.it/users/flavia_monti) and [Luciana Silo](https://www.diag.uniroma1.it/users/luciana_silo).
+The research team behind this work includes [Francesco Leotta](http://www.diag.uniroma1.it/leotta/), [Flavia Monti](https://www.diag.uniroma1.it/users/flavia_monti) and [Luciana Silo](https://www.diag.uniroma1.it/users/luciana_silo).
 
 ## License
 The software is released under the MIT license.
